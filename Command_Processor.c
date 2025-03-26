@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "cmdproc.h"
+#include "Command_Processor.h"
 
 /* Internal variables */
 /* Used as part of the UART emulation */

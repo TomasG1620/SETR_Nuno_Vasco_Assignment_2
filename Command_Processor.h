@@ -12,8 +12,8 @@
 /*														*/
 /* ******************************************************/
 
-#ifndef CMD_PROC_H_
-#define CMD_PROC_H_
+#ifndef COMMAND_PROCESSOR_H_
+#define COMMAND_PROCESSOR_H_
 
 /* Some defines */
 /* Other defines should be return codes of the functions */
