@@ -35,7 +35,10 @@ int main(void)
 	printf("Test1 - check the answer to a valid Pt command\n");
 	
 	/* 1 - send the command */
-	rxChar('#');
+	// rxChar('3');
+    // rxChar('2');             Teste - Mandar lixo antes do "#"
+    // rxChar('1');
+    rxChar('#');
 	rxChar('P');
 	rxChar('t');
 	rxChar('1');

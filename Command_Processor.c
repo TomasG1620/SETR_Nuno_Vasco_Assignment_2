@@ -1,6 +1,3 @@
-/* ****************************** */
-/* See cmdProc.h for indications  */
-/* ****************************** */
 #include <stdio.h>
 #include <string.h>
 
@@ -41,11 +38,21 @@ int cmdProcessor(void)
 		
 		switch(UARTRxBuffer[i+1]) { 
 			
-			case 'P':		
-				/* Command "P" detected.							*/
-				/* Follows one DATA byte that specifies the sensor	*/ 
-				/* to read. I assume 't','h','c' for temp., humid. 	*/
-				/* and CO2, resp.									*/   
+			case 'A':
+            
+				/* Check checksum */
+				if(!(calcChecksum(&(UARTRxBuffer[i+1]),2))) {
+					return -3;
+				}
+
+                /* Check EOF */
+				if(UARTRxBuffer[i+6] != EOF_SYM) {
+					return -4;
+				}
+
+                return 0;
+
+            case 'P':		
 		
 				/* Check sensor type */
 				sid = UARTRxBuffer[i+2];
@@ -83,7 +90,23 @@ int cmdProcessor(void)
 				
 				return 0;
 								
-			default:
+            case 'L':
+            
+				/* Check checksum */
+				if(!(calcChecksum(&(UARTRxBuffer[i+1]),2))) {
+					return -3;
+				}
+
+                /* Check EOF */
+				if(UARTRxBuffer[i+6] != EOF_SYM) {
+					return -4;
+				}
+
+                return 0;
+
+            case 'R':
+                
+            default:
 				/* If code reaches this place, the command is not recognized */
 				return -2;				
 		}
