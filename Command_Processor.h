@@ -23,7 +23,7 @@
 #define SOF_SYM '#'	        /* Start of Frame Symbol */
 #define EOF_SYM '!'          /* End of Frame Symbol */
 
-/* Function prototypes */
+/* Function prototype */
 
 /* ************************************************************ */
 /* Processes the chars in the RX buffer looking for commands 	*/
