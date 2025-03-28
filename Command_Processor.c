@@ -102,21 +102,34 @@ void ProcessCommand(char start_frame, char cmd, char data, char checksum, char e
 case 'L': // Lista do histórico das amostras
     printf("Last 20 samples:\n");
 
-    // Percorre até 20 amostras ou até o máximo de valores disponíveis
     for (int i = 0; i < MAX_HISTORY; i++) {
-        // Obtenção dos valores corretos, com verificação do índice
+        // Se o índice i for menor que o índice correspondente, pega o valor correto; caso contrário, retorna -1
         int temp_val = (i < temperature_index) ? temp_history[i] : -1;
         int hum_val = (i < humidity_index) ? hum_history[i] : -1;
         int co2_val = (i < co2_index) ? co2_history[i] : -1;
 
-        // Conversão condicional dos valores para string ou "-"
-        const char *temp_str = (temp_val != -1) ? int_to_string(temp_val) : "-";
-        const char *hum_str = (hum_val != -1) ? int_to_string(hum_val) : "-";
-        const char *co2_str = (co2_val != -1) ? int_to_string(co2_val) : "-";
+        // Converte inteiros em strings ou coloca "-"
+        char temp_str[10], hum_str[10], co2_str[10];
+        if (temp_val != -1)
+            snprintf(temp_str, sizeof(temp_str), "%d", temp_val);  // Convertendo inteiro em string
+        else
+            strcpy(temp_str, "-");
 
+        if (hum_val != -1)
+            snprintf(hum_str, sizeof(hum_str), "%d", hum_val);
+        else
+            strcpy(hum_str, "-");
+
+        if (co2_val != -1)
+            snprintf(co2_str, sizeof(co2_str), "%d", co2_val);
+        else
+            strcpy(co2_str, "-");
+
+        // Imprime a linha formatada
         printf("Sample %d -> Temp: %s, Hum: %s, CO2: %s\n", i + 1, temp_str, hum_str, co2_str);
     }
     break;
+
 
         case 'R': // Dá um reset no histórico 
             printf("Reseting the values...\n");
