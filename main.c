@@ -12,6 +12,7 @@ Descrição:
 #include "Command_Processor.h" 
 
 int main() {
+
     CommandProcessorInit();  // Inicializar o processador
 
     // Exemplo de comandos válidos com CMD, DATA e CHECKSUM em ASCII
@@ -33,4 +34,5 @@ int main() {
     ProcessCommand('#', 'L', 0, (char)('L' + 0), '!');   // CMD = 'L', DATA = 0
 
     return 0;
+    
 }

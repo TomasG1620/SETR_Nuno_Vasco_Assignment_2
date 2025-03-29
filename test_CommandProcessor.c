@@ -1,3 +1,14 @@
+/*  Assignment 2 - Sistemas Embutidos e de Tempo Real
+---------------------------------------------------------------------------------------------
+Autores: Tomás Gomes   [98807]
+         Vasco Pestana [88827]
+
+Descrição:
+        -> Implementação de um módulo em C que processa comandos que são recebidos em UART 
+        (um caratér de cada vez). O módulo faz parte de um sensor inteligente, capaz de medir
+        temperatura(-50ºC ... 60ºC), humidade(0 ... 100%) e CO2 (400 ... 20000 ppm).
+*/
+
 #include "Unity/src/unity.h"
 #include "Command_Processor.h"
 
