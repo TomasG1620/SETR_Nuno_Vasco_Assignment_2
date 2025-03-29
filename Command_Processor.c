@@ -39,7 +39,7 @@ void CommandProcessorInit(void) {
 
 // Função para calcular o checksum (CMD + DATA)
 char CalculateChecksum(char cmd, char data) {
-    return (char)((cmd + data) % 256);  // Limitar a soma a 8 bits (1 byte)
+    return (char)((cmd + data) % 256 );  // Limitar a soma a 8 bits (1 byte)
 }
 
 // Definição da função int_to_string
