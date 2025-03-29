@@ -9,7 +9,29 @@ Descrição:
         temperatura(-50ºC ... 60ºC), humidade(0 ... 100%) e CO2 (400 ... 20000 ppm).
 */
 
+/** 
+ * @file main.c
+ * @brief Programa principal para o processador de comandos de sensores inteligentes.
+ * 
+ * Este programa inicializa o processador de comandos e executa exemplos de comandos válidos 
+ * com diferentes funcionalidades, como leitura de sensores e histórico.
+ * 
+ * @authors 
+ *      - Tomás Gomes [98807]  
+ *      - Vasco Pestana [88827]
+ * @date 2025
+ */
+
 #include "Command_Processor.h" 
+
+/** 
+ * @brief Função principal do programa.
+ * 
+ * Esta função inicializa o processador e executa diferentes comandos para 
+ * testar as funcionalidades de medição e histórico.
+ * 
+ * @return int Código de saída.
+ */
 
 int main() {
 

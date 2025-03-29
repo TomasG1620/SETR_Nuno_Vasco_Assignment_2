@@ -9,6 +9,19 @@ Descrição:
         temperatura(-50ºC ... 60ºC), humidade(0 ... 100%) e CO2 (400 ... 20000 ppm).
 */
 
+/** 
+ * @file Command_Processor.c
+ * @brief Implementação do processador de comandos para sensores inteligentes.
+ * 
+ * Este módulo contém a lógica para processar comandos recebidos em UART,
+ * validar checksums, armazenar amostras de sensores e listar o histórico.
+ * 
+ * @authors 
+ *      - Tomás Gomes [98807]  
+ *      - Vasco Pestana [88827]
+ * @date 2025
+ */
+
 #include "Command_Processor.h"
 #include <stdio.h>
 #include <string.h>
@@ -30,6 +43,11 @@ int humidity_index = 0;
 int co2_index = 0;
 
 // Função para inicializar o processador de comandos
+
+/** 
+ * @brief Inicializa o processador de comandos.
+ */
+
 void CommandProcessorInit(void) {
     memset(temp_history, 0, sizeof(temp_history));
     memset(hum_history, 0, sizeof(hum_history));
@@ -91,45 +109,37 @@ void ProcessCommand(char start_frame, char cmd, char data, char checksum, char e
             }
             break;
 
-/*        case 'L': // Lista do histórico das amostras 
+        case 'L': // Lista do histórico das amostras
             printf("Last 20 samples:\n");
+
             for (int i = 0; i < MAX_HISTORY; i++) {
-                printf("Sample %d -> Temp: %d °C, Hum: %d %%, CO2: %d ppm\n", i + 1, 
-                    temp_history[i], hum_history[i], co2_history[i]);
+            // Se o índice i for menor que o índice correspondente, pega o valor correto; caso contrário, retorna -1
+                int temp_val = (i < temperature_index) ? temp_history[i] : -1;
+                int hum_val = (i < humidity_index) ? hum_history[i] : -1;
+                int co2_val = (i < co2_index) ? co2_history[i] : -1;
+
+            // Converte inteiros em strings ou coloca "-"
+                char temp_str[10], hum_str[10], co2_str[10];
+                if (temp_val != -1)
+                    snprintf(temp_str, sizeof(temp_str), "%d", temp_val);  // Convertendo inteiro em string
+                else
+                    strcpy(temp_str, "-");
+
+                if (hum_val != -1)
+                    snprintf(hum_str, sizeof(hum_str), "%d", hum_val);
+                else
+                    strcpy(hum_str, "-");
+
+                if (co2_val != -1)
+                    snprintf(co2_str, sizeof(co2_str), "%d", co2_val);
+                else
+                    strcpy(co2_str, "-");
+
+                // Imprime a linha formatada
+                printf("Sample %d -> Temp: %s, Hum: %s, CO2: %s\n", i + 1, temp_str, hum_str, co2_str);
             }
-            break;
-*/
-case 'L': // Lista do histórico das amostras
-    printf("Last 20 samples:\n");
 
-    for (int i = 0; i < MAX_HISTORY; i++) {
-        // Se o índice i for menor que o índice correspondente, pega o valor correto; caso contrário, retorna -1
-        int temp_val = (i < temperature_index) ? temp_history[i] : -1;
-        int hum_val = (i < humidity_index) ? hum_history[i] : -1;
-        int co2_val = (i < co2_index) ? co2_history[i] : -1;
-
-        // Converte inteiros em strings ou coloca "-"
-        char temp_str[10], hum_str[10], co2_str[10];
-        if (temp_val != -1)
-            snprintf(temp_str, sizeof(temp_str), "%d", temp_val);  // Convertendo inteiro em string
-        else
-            strcpy(temp_str, "-");
-
-        if (hum_val != -1)
-            snprintf(hum_str, sizeof(hum_str), "%d", hum_val);
-        else
-            strcpy(hum_str, "-");
-
-        if (co2_val != -1)
-            snprintf(co2_str, sizeof(co2_str), "%d", co2_val);
-        else
-            strcpy(co2_str, "-");
-
-        // Imprime a linha formatada
-        printf("Sample %d -> Temp: %s, Hum: %s, CO2: %s\n", i + 1, temp_str, hum_str, co2_str);
-    }
-    break;
-
+        break;
 
         case 'R': // Dá um reset no histórico 
             printf("Reseting the values...\n");
