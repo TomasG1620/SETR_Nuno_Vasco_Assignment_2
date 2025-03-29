@@ -1,0 +1,114 @@
+\doxysection{Command\+\_\+\+Processor.\+h File Reference}
+\hypertarget{Command__Processor_8h}{}\label{Command__Processor_8h}\index{Command\_Processor.h@{Command\_Processor.h}}
+
+
+Cabeçalho do processador de comandos para sensores inteligentes.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854}{Command\+Processor\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa o processador de comandos. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{Command__Processor_8h_a2d125587a91b263be469343779a11a3a}{Calculate\+Checksum}} (char cmd, char data)
+\begin{DoxyCompactList}\small\item\em Calcula o checksum de um comando. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028}{Process\+Command}} (char start\+\_\+frame, char cmd, char data, char checksum, char end\+\_\+frame)
+\begin{DoxyCompactList}\small\item\em Processa e valida um comando recebido. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Command__Processor_8h_a125b99bae196ccf8bac8e3d786c91a77}{int\+\_\+to\+\_\+string}} (int value)
+\begin{DoxyCompactList}\small\item\em Converte um número inteiro em string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cabeçalho do processador de comandos para sensores inteligentes. 
+
+Este cabeçalho contém as definições de funções utilizadas para processar comandos recebidos via UART, validando comandos, verificando checksums e armazenando histórico.
+
+\begin{DoxyAuthor}{Authors}
+
+\begin{DoxyItemize}
+\item Tomás Gomes \mbox{[}98807\mbox{]} ~\newline
+
+\item Vasco Pestana \mbox{[}88827\mbox{]} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Command__Processor_8h_a2d125587a91b263be469343779a11a3a}\label{Command__Processor_8h_a2d125587a91b263be469343779a11a3a} 
+\index{Command\_Processor.h@{Command\_Processor.h}!CalculateChecksum@{CalculateChecksum}}
+\index{CalculateChecksum@{CalculateChecksum}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{CalculateChecksum()}{CalculateChecksum()}}
+{\footnotesize\ttfamily char Calculate\+Checksum (\begin{DoxyParamCaption}\item[{char}]{cmd,  }\item[{char}]{data }\end{DoxyParamCaption})}
+
+
+
+Calcula o checksum de um comando. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & Caractere representando o comando. \\
+\hline
+{\em data} & Caractere representando os dados. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char Checksum calculado (1 byte). 
+\end{DoxyReturn}
+\Hypertarget{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854}\label{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854} 
+\index{Command\_Processor.h@{Command\_Processor.h}!CommandProcessorInit@{CommandProcessorInit}}
+\index{CommandProcessorInit@{CommandProcessorInit}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{CommandProcessorInit()}{CommandProcessorInit()}}
+{\footnotesize\ttfamily void Command\+Processor\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa o processador de comandos. 
+
+Esta função inicializa o histórico e define os valores iniciais dos sensores. \Hypertarget{Command__Processor_8h_a125b99bae196ccf8bac8e3d786c91a77}\label{Command__Processor_8h_a125b99bae196ccf8bac8e3d786c91a77} 
+\index{Command\_Processor.h@{Command\_Processor.h}!int\_to\_string@{int\_to\_string}}
+\index{int\_to\_string@{int\_to\_string}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{int\_to\_string()}{int\_to\_string()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} int\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Converte um número inteiro em string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Valor inteiro a ser convertido. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} Ponteiro para a string resultante. 
+\end{DoxyReturn}
+\Hypertarget{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028}\label{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028} 
+\index{Command\_Processor.h@{Command\_Processor.h}!ProcessCommand@{ProcessCommand}}
+\index{ProcessCommand@{ProcessCommand}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{ProcessCommand()}{ProcessCommand()}}
+{\footnotesize\ttfamily void Process\+Command (\begin{DoxyParamCaption}\item[{char}]{start\+\_\+frame,  }\item[{char}]{cmd,  }\item[{char}]{data,  }\item[{char}]{checksum,  }\item[{char}]{end\+\_\+frame }\end{DoxyParamCaption})}
+
+
+
+Processa e valida um comando recebido. 
+
+Esta função processa um comando recebido, verificando a estrutura e o checksum. Se o comando for válido, ele executa as funções apropriadas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+frame} & Caractere de início do comando (esperado \textquotesingle{}\#\textquotesingle{}). \\
+\hline
+{\em cmd} & Caractere representando o comando. \\
+\hline
+{\em data} & Dados do comando. \\
+\hline
+{\em checksum} & Checksum do comando (para validação). \\
+\hline
+{\em end\+\_\+frame} & Caractere de fim do comando (esperado \textquotesingle{}!\textquotesingle{}). \\
+\hline
+\end{DoxyParams}

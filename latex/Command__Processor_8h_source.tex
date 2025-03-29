@@ -1,0 +1,28 @@
+\doxysection{Command\+\_\+\+Processor.\+h}
+\hypertarget{Command__Processor_8h_source}{}\label{Command__Processor_8h_source}\mbox{\hyperlink{Command__Processor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ \ Assignment\ 2\ -\/\ Sistemas\ Embutidos\ e\ de\ Tempo\ Real}}
+\DoxyCodeLine{00002\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00003\ \textcolor{comment}{Autores:\ Tomás\ Gomes\ \ \ [98807]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ Vasco\ Pestana\ [88827]}}
+\DoxyCodeLine{00005\ \textcolor{comment}{}}
+\DoxyCodeLine{00006\ \textcolor{comment}{Descrição:}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ \ \ \ \ \ -\/>\ Implementação\ de\ um\ módulo\ em\ C\ que\ processa\ comandos\ que\ são\ recebidos\ em\ UART\ }}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ \ \ \ \ \ (um\ caratér\ de\ cada\ vez).\ O\ módulo\ faz\ parte\ de\ um\ sensor\ inteligente,\ capaz\ de\ medir}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ \ \ \ \ temperatura(-\/50ºC\ ...\ 60ºC),\ humidade(0\ ...\ 100\%)\ e\ CO2\ (400\ ...\ 20000\ ppm).}}
+\DoxyCodeLine{00010\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ COMMAND\_PROCESSOR\_H\ \ }}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ COMMAND\_PROCESSOR\_H\ }}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854}{CommandProcessorInit}}(\textcolor{keywordtype}{void});\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{Command__Processor_8h_a2d125587a91b263be469343779a11a3a}{CalculateChecksum}}(\textcolor{keywordtype}{char}\ cmd,\ \textcolor{keywordtype}{char}\ data);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028}{ProcessCommand}}(\textcolor{keywordtype}{char}\ start\_frame,\ \textcolor{keywordtype}{char}\ cmd,\ \textcolor{keywordtype}{char}\ data,\ \textcolor{keywordtype}{char}\ checksum,\ \textcolor{keywordtype}{char}\ end\_frame);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{Command__Processor_8h_a125b99bae196ccf8bac8e3d786c91a77}{int\_to\_string}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
