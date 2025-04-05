@@ -93,6 +93,9 @@ Macros</h2></td></tr>
 <tr class="memitem:abf8d8994f09509f9e061f5bf82daf4cd" id="r_abf8d8994f09509f9e061f5bf82daf4cd"><td class="memItemLeft" align="right" valign="top"><a id="abf8d8994f09509f9e061f5bf82daf4cd" name="abf8d8994f09509f9e061f5bf82daf4cd"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_HISTORY</b>&#160;&#160;&#160;20</td></tr>
 <tr class="separator:abf8d8994f09509f9e061f5bf82daf4cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3cc4ba42efb48f16226cb5ba77c1bbb" id="r_af3cc4ba42efb48f16226cb5ba77c1bbb"><td class="memItemLeft" align="right" valign="top"><a id="af3cc4ba42efb48f16226cb5ba77c1bbb" name="af3cc4ba42efb48f16226cb5ba77c1bbb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CMD_LENGTH</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:af3cc4ba42efb48f16226cb5ba77c1bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -102,9 +105,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a2d125587a91b263be469343779a11a3a" id="r_a2d125587a91b263be469343779a11a3a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8c.html#a2d125587a91b263be469343779a11a3a">CalculateChecksum</a> (char cmd, char data)</td></tr>
 <tr class="memdesc:a2d125587a91b263be469343779a11a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o checksum de um comando.  <br /></td></tr>
 <tr class="separator:a2d125587a91b263be469343779a11a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a125b99bae196ccf8bac8e3d786c91a77" id="r_a125b99bae196ccf8bac8e3d786c91a77"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8c.html#a125b99bae196ccf8bac8e3d786c91a77">int_to_string</a> (int value)</td></tr>
-<tr class="memdesc:a125b99bae196ccf8bac8e3d786c91a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converte um número inteiro em string.  <br /></td></tr>
-<tr class="separator:a125b99bae196ccf8bac8e3d786c91a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a3cfbee206d916c5738bd0b14af5424" id="r_a4a3cfbee206d916c5738bd0b14af5424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8c.html#a4a3cfbee206d916c5738bd0b14af5424">UART_SendChar</a> (char c)</td></tr>
+<tr class="memdesc:a4a3cfbee206d916c5738bd0b14af5424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envio caractere a caractere.  <br /></td></tr>
+<tr class="separator:a4a3cfbee206d916c5738bd0b14af5424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d54817ce5409ef5576568ca41cce6ed" id="r_a3d54817ce5409ef5576568ca41cce6ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8c.html#a3d54817ce5409ef5576568ca41cce6ed">UART_SendString</a> (const char *str)</td></tr>
+<tr class="memdesc:a3d54817ce5409ef5576568ca41cce6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envio de uma string caractere a caractere.  <br /></td></tr>
+<tr class="separator:a3d54817ce5409ef5576568ca41cce6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73ec1aa0ccac25eb780df23a1f3339c7" id="r_a73ec1aa0ccac25eb780df23a1f3339c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8c.html#a73ec1aa0ccac25eb780df23a1f3339c7">UART_ReceiveChar</a> (char c)</td></tr>
+<tr class="memdesc:a73ec1aa0ccac25eb780df23a1f3339c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer para receber e guardar os 5 caracteres do comando.  <br /></td></tr>
+<tr class="separator:a73ec1aa0ccac25eb780df23a1f3339c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09f3672776b6369aaaa718742da0f028" id="r_a09f3672776b6369aaaa718742da0f028"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8c.html#a09f3672776b6369aaaa718742da0f028">ProcessCommand</a> (char start_frame, char cmd, char data, char checksum, char end_frame)</td></tr>
 <tr class="memdesc:a09f3672776b6369aaaa718742da0f028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processa e valida um comando recebido.  <br /></td></tr>
 <tr class="separator:a09f3672776b6369aaaa718742da0f028"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,33 +218,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>co2_index</b> = 0</td>
 
 </div>
 </div>
-<a id="a125b99bae196ccf8bac8e3d786c91a77" name="a125b99bae196ccf8bac8e3d786c91a77"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a125b99bae196ccf8bac8e3d786c91a77">&#9670;&#160;</a></span>int_to_string()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * int_to_string </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converte um número inteiro em string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>Valor inteiro a ser convertido. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>const char* Ponteiro para a string resultante. </dd></dl>
-
-</div>
-</div>
 <a id="a09f3672776b6369aaaa718742da0f028" name="a09f3672776b6369aaaa718742da0f028"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a09f3672776b6369aaaa718742da0f028">&#9670;&#160;</a></span>ProcessCommand()</h2>
 
@@ -289,6 +271,87 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>co2_index</b> = 0</td>
     <tr><td class="paramname">data</td><td>Dados do comando. </td></tr>
     <tr><td class="paramname">checksum</td><td>Checksum do comando (para validação). </td></tr>
     <tr><td class="paramname">end_frame</td><td>Caractere de fim do comando (esperado '!'). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a73ec1aa0ccac25eb780df23a1f3339c7" name="a73ec1aa0ccac25eb780df23a1f3339c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73ec1aa0ccac25eb780df23a1f3339c7">&#9670;&#160;</a></span>UART_ReceiveChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UART_ReceiveChar </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Buffer para receber e guardar os 5 caracteres do comando. </p>
+<p>Esta função recebe um caractere de cada vez e ao receber o '#' guarda os 4 próximos caracteres para depois mandar para a função ProcessCommand.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Caractere recebido. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a3cfbee206d916c5738bd0b14af5424" name="a4a3cfbee206d916c5738bd0b14af5424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a3cfbee206d916c5738bd0b14af5424">&#9670;&#160;</a></span>UART_SendChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UART_SendChar </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envio caractere a caractere. </p>
+<p>Esta função faz a transmissão caractere a caractere.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Caractere a ser transmitido. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3d54817ce5409ef5576568ca41cce6ed" name="a3d54817ce5409ef5576568ca41cce6ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d54817ce5409ef5576568ca41cce6ed">&#9670;&#160;</a></span>UART_SendString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UART_SendString </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envio de uma string caractere a caractere. </p>
+<p>Esta função converte uma string em caracteres para serem transmitidos</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>String a ser convertida e transmitida. </td></tr>
   </table>
   </dd>
 </dl>

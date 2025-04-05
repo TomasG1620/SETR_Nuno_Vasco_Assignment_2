@@ -48,7 +48,7 @@ char CalculateChecksum(char cmd, char data);
  * 
  * Esta função faz a transmissão caractere a caractere.
  * 
- * @param c Caractere recebido.
+ * @param c Caractere a ser transmitido.
  */
 
 void UART_SendChar(char c);
@@ -56,9 +56,9 @@ void UART_SendChar(char c);
 /**
  * @brief Envio de uma string caractere a caractere.
  * 
- * Esta função transforma uma string em caracteres para serem transmitidos
+ * Esta função converte uma string em caracteres para serem transmitidos
  * 
- * @param str Caractere recebido.
+ * @param str String a ser convertida e transmitida.
  */
 
 void UART_SendString(const char* str);

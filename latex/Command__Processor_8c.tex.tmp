@@ -15,6 +15,9 @@ Include dependency graph for Command\+\_\+\+Processor.\+c\+:
 \item 
 \Hypertarget{Command__Processor_8c_abf8d8994f09509f9e061f5bf82daf4cd}\label{Command__Processor_8c_abf8d8994f09509f9e061f5bf82daf4cd} 
 \#define {\bfseries MAX\+\_\+\+HISTORY}~20
+\item 
+\Hypertarget{Command__Processor_8c_af3cc4ba42efb48f16226cb5ba77c1bbb}\label{Command__Processor_8c_af3cc4ba42efb48f16226cb5ba77c1bbb} 
+\#define {\bfseries CMD\+\_\+\+LENGTH}~5
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -23,8 +26,12 @@ void \mbox{\hyperlink{Command__Processor_8c_af2570ae1b0a1e72a7e85de23ed12a854}{C
 \begin{DoxyCompactList}\small\item\em Inicializa o processador de comandos. \end{DoxyCompactList}\item 
 char \mbox{\hyperlink{Command__Processor_8c_a2d125587a91b263be469343779a11a3a}{Calculate\+Checksum}} (char cmd, char data)
 \begin{DoxyCompactList}\small\item\em Calcula o checksum de um comando. \end{DoxyCompactList}\item 
-const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Command__Processor_8c_a125b99bae196ccf8bac8e3d786c91a77}{int\+\_\+to\+\_\+string}} (int value)
-\begin{DoxyCompactList}\small\item\em Converte um número inteiro em string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8c_a4a3cfbee206d916c5738bd0b14af5424}{UART\+\_\+\+Send\+Char}} (char c)
+\begin{DoxyCompactList}\small\item\em Envio caractere a caractere. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8c_a3d54817ce5409ef5576568ca41cce6ed}{UART\+\_\+\+Send\+String}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Envio de uma string caractere a caractere. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8c_a73ec1aa0ccac25eb780df23a1f3339c7}{UART\+\_\+\+Receive\+Char}} (char c)
+\begin{DoxyCompactList}\small\item\em Buffer para receber e guardar os 5 caracteres do comando. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{Command__Processor_8c_a09f3672776b6369aaaa718742da0f028}{Process\+Command}} (char start\+\_\+frame, char cmd, char data, char checksum, char end\+\_\+frame)
 \begin{DoxyCompactList}\small\item\em Processa e valida um comando recebido. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
@@ -108,25 +115,7 @@ char Checksum calculado (1 byte).
 
 Inicializa o processador de comandos. 
 
-Esta função inicializa o histórico e define os valores iniciais dos sensores. \Hypertarget{Command__Processor_8c_a125b99bae196ccf8bac8e3d786c91a77}\label{Command__Processor_8c_a125b99bae196ccf8bac8e3d786c91a77} 
-\index{Command\_Processor.c@{Command\_Processor.c}!int\_to\_string@{int\_to\_string}}
-\index{int\_to\_string@{int\_to\_string}!Command\_Processor.c@{Command\_Processor.c}}
-\doxysubsubsection{\texorpdfstring{int\_to\_string()}{int\_to\_string()}}
-{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} int\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
-
-
-
-Converte um número inteiro em string. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em value} & Valor inteiro a ser convertido. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-const char\texorpdfstring{$\ast$}{*} Ponteiro para a string resultante. 
-\end{DoxyReturn}
-\Hypertarget{Command__Processor_8c_a09f3672776b6369aaaa718742da0f028}\label{Command__Processor_8c_a09f3672776b6369aaaa718742da0f028} 
+Esta função inicializa o histórico e define os valores iniciais dos sensores. \Hypertarget{Command__Processor_8c_a09f3672776b6369aaaa718742da0f028}\label{Command__Processor_8c_a09f3672776b6369aaaa718742da0f028} 
 \index{Command\_Processor.c@{Command\_Processor.c}!ProcessCommand@{ProcessCommand}}
 \index{ProcessCommand@{ProcessCommand}!Command\_Processor.c@{Command\_Processor.c}}
 \doxysubsubsection{\texorpdfstring{ProcessCommand()}{ProcessCommand()}}
@@ -149,5 +138,56 @@ Esta função processa um comando recebido, verificando a estrutura e o checksum
 {\em checksum} & Checksum do comando (para validação). \\
 \hline
 {\em end\+\_\+frame} & Caractere de fim do comando (esperado \textquotesingle{}!\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Command__Processor_8c_a73ec1aa0ccac25eb780df23a1f3339c7}\label{Command__Processor_8c_a73ec1aa0ccac25eb780df23a1f3339c7} 
+\index{Command\_Processor.c@{Command\_Processor.c}!UART\_ReceiveChar@{UART\_ReceiveChar}}
+\index{UART\_ReceiveChar@{UART\_ReceiveChar}!Command\_Processor.c@{Command\_Processor.c}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveChar()}{UART\_ReceiveChar()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Receive\+Char (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Buffer para receber e guardar os 5 caracteres do comando. 
+
+Esta função recebe um caractere de cada vez e ao receber o \textquotesingle{}\#\textquotesingle{} guarda os 4 próximos caracteres para depois mandar para a função Process\+Command.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caractere recebido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Command__Processor_8c_a4a3cfbee206d916c5738bd0b14af5424}\label{Command__Processor_8c_a4a3cfbee206d916c5738bd0b14af5424} 
+\index{Command\_Processor.c@{Command\_Processor.c}!UART\_SendChar@{UART\_SendChar}}
+\index{UART\_SendChar@{UART\_SendChar}!Command\_Processor.c@{Command\_Processor.c}}
+\doxysubsubsection{\texorpdfstring{UART\_SendChar()}{UART\_SendChar()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+Char (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Envio caractere a caractere. 
+
+Esta função faz a transmissão caractere a caractere.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caractere a ser transmitido. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Command__Processor_8c_a3d54817ce5409ef5576568ca41cce6ed}\label{Command__Processor_8c_a3d54817ce5409ef5576568ca41cce6ed} 
+\index{Command\_Processor.c@{Command\_Processor.c}!UART\_SendString@{UART\_SendString}}
+\index{UART\_SendString@{UART\_SendString}!Command\_Processor.c@{Command\_Processor.c}}
+\doxysubsubsection{\texorpdfstring{UART\_SendString()}{UART\_SendString()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Envio de uma string caractere a caractere. 
+
+Esta função converte uma string em caracteres para serem transmitidos
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String a ser convertida e transmitida. \\
 \hline
 \end{DoxyParams}
