@@ -1,30 +1,64 @@
-# Makefile with variables
-P = main
-OBJECTS = main.o Command_Processor.o 
-CFLAGS = -g -Wall -O3
-LDLIBS = 
-CC = gcc
+# Nome do módulo
+MODULE_NAME = CommandProcessor
 
-# Compilação do projeto
-$(P): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(P) $(OBJECTS)
+# Paths
+UNITY_ROOT = Unity
+SRC_FOLDER = .
+TEST_FOLDER = .
 
-# Compilação dos arquivos
-%.o: %.c %.h
-	$(CC) $(CFLAGS) -c $< -o $@
+# Commands
+CLEANUP = rm -f
+MKDIR = mkdir -p
 
-# Limpeza dos arquivos compilados 
+# Compiler
+C_COMPILER = gcc
+CFLAGS=-std=c99  
+CFLAGS += -Wall
+CFLAGS += -Wextra
+CFLAGS += -Wpointer-arith
+CFLAGS += -Wcast-align
+CFLAGS += -Wwrite-strings
+CFLAGS += -Wswitch-default
+CFLAGS += -Wunreachable-code
+CFLAGS += -Winit-self
+CFLAGS += -Wmissing-field-initializers
+CFLAGS += -Wno-unknown-pragmas
+CFLAGS += -Wstrict-prototypes
+CFLAGS += -Wundef
+CFLAGS += -Wold-style-definition
+
+# Executáveis
+TEST_TARGET = test$(MODULE_NAME)
+MAIN_TARGET = main$(MODULE_NAME)
+
+# Ficheiros fonte
+SRC_FILES=$(UNITY_ROOT)/src/unity.c $(SRC_FOLDER)/Command_Processor.c $(TEST_FOLDER)/test_$(MODULE_NAME).c
+MAIN_FILES=$(SRC_FOLDER)/Command_Processor.c $(SRC_FOLDER)/main.c
+
+# Includes
+INC_DIRS=-I$(SRC_FOLDER) -I$(UNITY_ROOT)/src
+SYMBOLS=
+
+all: clean $(TEST_TARGET) $(MAIN_TARGET) run_tests run_main
+
+# Compilar os testes
+$(TEST_TARGET): $(SRC_FILES)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES) -o $(TEST_TARGET)
+
+# Compilar o programa principal
+$(MAIN_TARGET): $(MAIN_FILES)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(MAIN_FILES) -o $(MAIN_TARGET)
+
+# Executar os testes
+run_tests: $(TEST_TARGET)
+	./$(TEST_TARGET)
+
+# Executar o programa principal
+run_main: $(MAIN_TARGET)
+	./$(MAIN_TARGET)
+
+# Limpeza dos arquivos gerados
 clean:
-	rm *.o $(P)
+	$(CLEANUP) $(TEST_TARGET) $(MAIN_TARGET)
 
-# Regra para formatar o código (usando clang-format)
-#format:
-#	clang-format -i *.c *.h
-
-# Regra para verificar a formatação
-#check-format:
-#	clang-format --dry-run --Werror *.c *.h
-
-# Phony targets (não geram ficheiros com estes nomes)
-#.PHONY: all test clean format check-format
 

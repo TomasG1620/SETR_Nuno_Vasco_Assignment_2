@@ -17,7 +17,7 @@ Descrição:
 char uart_output[1024];
 int uart_index = 0;
 
-void UART_SendChar(char c) {
+void UART_SendChar_Test(char c) {
     uart_output[uart_index++] = c;
     uart_output[uart_index] = '\0'; // garantir null-termination
 }
