@@ -58,7 +58,7 @@ void UART_SendChar(char c);
  * 
  * Esta função transforma uma string em caracteres para serem transmitidos
  * 
- * @param c Caractere recebido.
+ * @param str Caractere recebido.
  */
 
 void UART_SendString(const char* str);
