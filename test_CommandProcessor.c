@@ -11,50 +11,66 @@ Descrição:
 
 #include "Unity/src/unity.h"
 #include "Command_Processor.h"
+#include <string.h>
 
-// Função chamada antes de cada teste
-void setUp(void) { 
+// Função para simular UART output
+char uart_output[1024];
+int uart_index = 0;
+
+void UART_SendChar(char c) {
+    uart_output[uart_index++] = c;
+    uart_output[uart_index] = '\0'; // garantir null-termination
+}
+
+void setUp(void) {
+    uart_index = 0;
+    uart_output[0] = '\0';
     CommandProcessorInit();
 }
 
-// Função chamada após cada teste
-void tearDown(void) {}
-
-// Teste para verificar se o checksum é calculado corretamente
-void test_CalculateChecksum(void) {
-    TEST_ASSERT_EQUAL_CHAR((char)(('A' + 0) % 256), CalculateChecksum('A', 0));
-    TEST_ASSERT_EQUAL_CHAR((char)(('P' + 'T') % 256), CalculateChecksum('P', 'T'));
-    TEST_ASSERT_EQUAL_CHAR((char)(('L' + 0) % 256), CalculateChecksum('L', 0));
+void tearDown(void) {
+    // Nada a limpar por agora
 }
 
-
-// Teste para comandos válidos
-void test_ProcessCommand_Valid(void) {
-    ProcessCommand('#', 'A', 0, CalculateChecksum('A', 0), '!');
-    ProcessCommand('#', 'P', 'T', CalculateChecksum('P', 'T'), '!');
-    ProcessCommand('#', 'R', 0, CalculateChecksum('R', 0), '!');
+void test_CalculateChecksum_should_return_correct_value(void) {
+    TEST_ASSERT_EQUAL_CHAR((char)(( 'A' + 'T') % 256), CalculateChecksum('A', 'T'));
+    TEST_ASSERT_EQUAL_CHAR((char)(( 'P' + 'H') % 256), CalculateChecksum('P', 'H'));
 }
 
-// Teste para comandos inválidos (checksum errado)
-void test_ProcessCommand_InvalidChecksum(void) {
-    // Comando inválido pois o checksum não bate
-    ProcessCommand('#', 'A', 0, 'X', '!');
+void test_ProcessCommand_valid_command_all(void) {
+    char cmd[] = {'#', 'A', '0', CalculateChecksum('A', '0'), '!'};
+    ProcessCommand(cmd[0], cmd[1], cmd[2], cmd[3], cmd[4]);
+
+    TEST_ASSERT_NOT_EQUAL(0, strlen(uart_output));
+    TEST_ASSERT_NOT_NULL(strstr(uart_output, "Temperature:"));
+    TEST_ASSERT_NOT_NULL(strstr(uart_output, "Humidity:"));
+    TEST_ASSERT_NOT_NULL(strstr(uart_output, "CO2:"));
 }
 
-// Teste para comando inválido (estrutura errada)
-void test_ProcessCommand_InvalidStructure(void) {
-    // Comando inválido pois falta um caractere válido
-    ProcessCommand('*', 'A', 0, CalculateChecksum('A', 0), '!');
+void test_ProcessCommand_invalid_checksum(void) {
+    char cmd[] = {'#', 'A', '0', 0x00 /* errado */, '!'};
+    ProcessCommand(cmd[0], cmd[1], cmd[2], cmd[3], cmd[4]);
+
+    TEST_ASSERT_NOT_NULL(strstr(uart_output, "Error: Invalid command structure"));
 }
 
-// Função principal de testes
+void test_UART_ReceiveChar_whole_command(void) {
+    char full_command[] = {'#', 'A', '0', CalculateChecksum('A', '0'), '!'};
+    for (int i = 0; i < 5; i++) {
+        UART_ReceiveChar(full_command[i]);
+    }
+
+    TEST_ASSERT_NOT_EQUAL(0, strlen(uart_output));
+    TEST_ASSERT_NOT_NULL(strstr(uart_output, "Temperature:"));
+}
+
 int main(void) {
     UNITY_BEGIN();
 
-    RUN_TEST(test_CalculateChecksum);
-    RUN_TEST(test_ProcessCommand_Valid);
-    RUN_TEST(test_ProcessCommand_InvalidChecksum);
-    RUN_TEST(test_ProcessCommand_InvalidStructure);
+    RUN_TEST(test_CalculateChecksum_should_return_correct_value);
+    RUN_TEST(test_ProcessCommand_valid_command_all);
+    RUN_TEST(test_ProcessCommand_invalid_checksum);
+    RUN_TEST(test_UART_ReceiveChar_whole_command);
 
     return UNITY_END();
 }
