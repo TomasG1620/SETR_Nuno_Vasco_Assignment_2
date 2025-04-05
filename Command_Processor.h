@@ -44,17 +44,35 @@ void CommandProcessorInit(void);
 char CalculateChecksum(char cmd, char data);
 
 /**
+ * @brief Envio caractere a caractere.
+ * 
+ * Esta função faz a transmissão caractere a caractere.
+ * 
+ * @param c Caractere recebido.
+ */
+
+void UART_SendChar(char c);
+
+/**
+ * @brief Envio de uma string caractere a caractere.
+ * 
+ * Esta função transforma uma string em caracteres para serem transmitidos
+ * 
+ * @param c Caractere recebido.
+ */
+
+void UART_SendString(const char* str);
+
+/**
  * @brief Buffer para receber e guardar os 5 caracteres do comando.
  * 
- * Esta função recebe um caractere de cada vez e ao receber o '#' guarda os 4 próximos caracteres para depois mandar para a função ProcessCommand
+ * Esta função recebe um caractere de cada vez e ao receber o '#' guarda os 4 próximos caracteres para depois mandar para a função ProcessCommand.
  * 
- * @param start_frame Caractere de início do comando (esperado '#').
- * @param cmd Caractere representando o comando.
- * @param data Dados do comando.
- * @param checksum Checksum do comando (para validação).
- * @param end_frame Caractere de fim do comando (esperado '!').
+ * @param c Caractere recebido.
  */
+
 void UART_ReceiveChar(char c);
+
 /**
  * @brief Processa e valida um comando recebido.
  * 

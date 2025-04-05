@@ -61,6 +61,16 @@ char CalculateChecksum(char cmd, char data) {
     return (char)((cmd + data) % 256 );  // Limitar a soma a 8 bits (1 byte)
 }
 
+void UART_SendChar(char c) {
+    putchar(c);  // Pode ser substituído por envio real de UART
+}
+
+void UART_SendString(const char* str) {
+    while (*str) {
+        UART_SendChar(*str++);
+    }
+}
+
 void UART_ReceiveChar(char c) {
     static char cmd_buffer[CMD_LENGTH];
     static int buffer_index = 0;
@@ -76,7 +86,7 @@ void UART_ReceiveChar(char c) {
     else if (receiving) {
         cmd_buffer[buffer_index] = c;
         buffer_index++;
-        
+
         if (buffer_index == CMD_LENGTH) {
             // Temos os 5 caracteres necessários: #, cmd, data, checksum, !
             ProcessCommand(cmd_buffer[0], cmd_buffer[1], cmd_buffer[2], cmd_buffer[3], cmd_buffer[4]);
@@ -90,20 +100,24 @@ void UART_ReceiveChar(char c) {
 
 // Processar o comando, validando ASCII, checksum e estrutura correta
 void ProcessCommand(char start_frame, char cmd, char data, char checksum, char end_frame) {
+    char buffer[100];
 
-    // Validação de estrutura e checksum
     if (start_frame != '#' || end_frame != '!' || checksum != CalculateChecksum(cmd, data)) {
-        printf("Error: Invalid command structure or incorrect checksum\n");
+        UART_SendString("Error: Invalid command structure or incorrect checksum\n");
         return;
     }
 
     switch (cmd) {
-        case 'A': // Obter todos os valores dos sensores em tempo real
-            printf("Temperature: %d °C\n", temperature_values[temperature_index % MAX_HISTORY]);
-            printf("Humidity: %d %%\n", humidity_values[humidity_index % MAX_HISTORY]);
-            printf("CO2: %d ppm\n", co2_values[co2_index % MAX_HISTORY]);
+        case 'A':
+            sprintf(buffer, "Temperature: %d °C\n", temperature_values[temperature_index % MAX_HISTORY]);
+            UART_SendString(buffer);
 
-            // Guardar no histórico
+            sprintf(buffer, "Humidity: %d %%\n", humidity_values[humidity_index % MAX_HISTORY]);
+            UART_SendString(buffer);
+
+            sprintf(buffer, "CO2: %d ppm\n", co2_values[co2_index % MAX_HISTORY]);
+            UART_SendString(buffer);
+
             temp_history[temperature_index % MAX_HISTORY] = temperature_values[temperature_index % MAX_HISTORY];
             hum_history[humidity_index % MAX_HISTORY] = humidity_values[humidity_index % MAX_HISTORY];
             co2_history[co2_index % MAX_HISTORY] = co2_values[co2_index % MAX_HISTORY];
@@ -112,37 +126,37 @@ void ProcessCommand(char start_frame, char cmd, char data, char checksum, char e
             co2_index++;
             break;
 
-        case 'P': // Obter valor de um sensor específico
+        case 'P':
             if (data == 'T') {
-                printf("Temperature: %d °C\n", temperature_values[(temperature_index) % MAX_HISTORY]);
+                sprintf(buffer, "Temperature: %d °C\n", temperature_values[temperature_index % MAX_HISTORY]);
+                UART_SendString(buffer);
                 temp_history[temperature_index % MAX_HISTORY] = temperature_values[temperature_index % MAX_HISTORY];
                 temperature_index++;
             } else if (data == 'H') {
-                printf("Humidity: %d %%\n", humidity_values[(humidity_index) % MAX_HISTORY]);
+                sprintf(buffer, "Humidity: %d %%\n", humidity_values[humidity_index % MAX_HISTORY]);
+                UART_SendString(buffer);
                 hum_history[humidity_index % MAX_HISTORY] = humidity_values[humidity_index % MAX_HISTORY];
                 humidity_index++;
             } else if (data == 'C') {
-                printf("CO2: %d ppm\n", co2_values[(co2_index) % MAX_HISTORY]);
+                sprintf(buffer, "CO2: %d ppm\n", co2_values[co2_index % MAX_HISTORY]);
+                UART_SendString(buffer);
                 co2_history[co2_index % MAX_HISTORY] = co2_values[co2_index % MAX_HISTORY];
                 co2_index++;
             } else {
-                printf("Invalid sensor\n");
+                UART_SendString("Invalid sensor\n");
             }
             break;
 
-        case 'L': // Lista do histórico das amostras
-            printf("Last 20 samples:\n");
-
+        case 'L':
+            UART_SendString("Last 20 samples:\n");
             for (int i = 0; i < MAX_HISTORY; i++) {
-            // Se o índice i for menor que o índice correspondente, pega o valor correto; caso contrário, retorna -1
                 int temp_val = (i < temperature_index) ? temp_history[i] : -1;
                 int hum_val = (i < humidity_index) ? hum_history[i] : -1;
                 int co2_val = (i < co2_index) ? co2_history[i] : -1;
 
-            // Converte inteiros em strings ou coloca "-"
                 char temp_str[10], hum_str[10], co2_str[10];
                 if (temp_val != -1)
-                    snprintf(temp_str, sizeof(temp_str), "%d", temp_val);  // Convertendo inteiro em string
+                    snprintf(temp_str, sizeof(temp_str), "%d", temp_val);
                 else
                     strcpy(temp_str, "-");
 
@@ -156,14 +170,13 @@ void ProcessCommand(char start_frame, char cmd, char data, char checksum, char e
                 else
                     strcpy(co2_str, "-");
 
-                // Imprime a linha formatada
-                printf("Sample %d -> Temp: %s, Hum: %s, CO2: %s\n", i + 1, temp_str, hum_str, co2_str);
+                sprintf(buffer, "Sample %d -> Temp: %s, Hum: %s, CO2: %s\n", i + 1, temp_str, hum_str, co2_str);
+                UART_SendString(buffer);
             }
+            break;
 
-        break;
-
-        case 'R': // Dá um reset no histórico 
-            printf("Reseting the values...\n");
+        case 'R':
+            UART_SendString("Reseting the values...\n");
             memset(temp_history, 0, sizeof(temp_history));
             memset(hum_history, 0, sizeof(hum_history));
             memset(co2_history, 0, sizeof(co2_history));
@@ -173,7 +186,7 @@ void ProcessCommand(char start_frame, char cmd, char data, char checksum, char e
             break;
 
         default:
-            printf("Invalid command\n");
+            UART_SendString("Invalid command\n");
             break;
     }
 }
