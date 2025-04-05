@@ -27,6 +27,7 @@ Descrição:
 #include <string.h>
 
 #define MAX_HISTORY 20
+#define CMD_LENGTH 5
 
 // Valores pré-determinados para sensores (amostras)
 int temperature_values[MAX_HISTORY] = {22, 23, 21, 25, 24, 26, 22, 23, 21, 24, 25, 23, 26, 24, 21, 23, 24, 22, 26, 25};
@@ -60,11 +61,31 @@ char CalculateChecksum(char cmd, char data) {
     return (char)((cmd + data) % 256 );  // Limitar a soma a 8 bits (1 byte)
 }
 
-// Definição da função int_to_string
-const char *int_to_string(int value) {
-    static char buffer[10];           // Buffer para armazenar o valor convertido
-    sprintf(buffer, "%d", value);     // Converte o número em string
-    return buffer;                    // Retorna o ponteiro para o buffer
+void UART_ReceiveChar(char c) {
+    static char cmd_buffer[CMD_LENGTH];
+    static int buffer_index = 0;
+    static int receiving = 0;
+
+    if (c == '#' && !receiving) {
+        receiving = 1;
+        buffer_index = 0;
+        cmd_buffer[buffer_index] = c;
+        buffer_index++;
+
+    }
+    else if (receiving) {
+        cmd_buffer[buffer_index] = c;
+        buffer_index++;
+        
+        if (buffer_index == CMD_LENGTH) {
+            // Temos os 5 caracteres necessários: #, cmd, data, checksum, !
+            ProcessCommand(cmd_buffer[0], cmd_buffer[1], cmd_buffer[2], cmd_buffer[3], cmd_buffer[4]);
+
+            // Reset do estado
+            receiving = 0;
+            buffer_index = 0;
+        }
+    }
 }
 
 // Processar o comando, validando ASCII, checksum e estrutura correta

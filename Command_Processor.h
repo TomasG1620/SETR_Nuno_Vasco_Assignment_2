@@ -44,6 +44,18 @@ void CommandProcessorInit(void);
 char CalculateChecksum(char cmd, char data);
 
 /**
+ * @brief Buffer para receber e guardar os 5 caracteres do comando.
+ * 
+ * Esta função recebe um caractere de cada vez e ao receber o '#' guarda os 4 próximos caracteres para depois mandar para a função ProcessCommand
+ * 
+ * @param start_frame Caractere de início do comando (esperado '#').
+ * @param cmd Caractere representando o comando.
+ * @param data Dados do comando.
+ * @param checksum Checksum do comando (para validação).
+ * @param end_frame Caractere de fim do comando (esperado '!').
+ */
+void UART_ReceiveChar(char c);
+/**
  * @brief Processa e valida um comando recebido.
  * 
  * Esta função processa um comando recebido, verificando a estrutura e o checksum.
@@ -65,6 +77,5 @@ void ProcessCommand(char start_frame, char cmd, char data, char checksum, char e
  * @return const char* Ponteiro para a string resultante.
  */
 
-const char *int_to_string(int value);
 
 #endif

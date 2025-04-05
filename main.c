@@ -22,39 +22,90 @@ Descrição:
  * @date 2025
  */
 
-#include "Command_Processor.h" 
+#include <stdio.h>
+#include <string.h>
 
-/** 
- * @brief Função principal do programa.
- * 
- * Esta função inicializa o processador e executa diferentes comandos para 
- * testar as funcionalidades de medição e histórico.
- * 
- * @return int Código de saída.
- */
+#include "Command_Processor.h"
 
-int main() {
+int main(void) {
+    // Inicializar o processador de comandos
+    CommandProcessorInit();
 
-    CommandProcessorInit();  // Inicializar o processador
+    // -------------------------
+    // Simular comando: #A X Y ! (todos os sensores)
+    // Comando: A (All), Data: T (qualquer, pois 'A' ignora), Checksum: A + T
+    // -------------------------
+    char cmd = 'A';
+    char data = 'T';  // dummy
+    char checksum = CalculateChecksum(cmd, data);
 
-    // Exemplo de comandos válidos com CMD, DATA e CHECKSUM em ASCII
-    ProcessCommand('#', 'A', 0, (char)('A' + 0), '!');   // CMD = 'A', DATA = 0
+    char comando1[] = { '#', cmd, data, checksum, '!' };
+    printf("\n[TESTE 1] Comando 'A' - Todos os sensores\n");
+    for (int i = 0; i < 5; i++) {
+        UART_ReceiveChar(comando1[i]);
+    }
 
-    ProcessCommand('#', 'P', 'T', (char)('P' + 'T'), '!'); // CMD = 'P', DATA = 'T'
-    ProcessCommand('#', 'P', 'T', (char)('P' + 'T'), '!'); // CMD = 'P', DATA = 'T'
-	ProcessCommand('#', 'P', 'T', (char)('P' + 'T'), '!'); // CMD = 'P', DATA = 'T'
-    
-    ProcessCommand('#', 'A', 0, (char)('A' + 0), '!');   // CMD = 'A', DATA = 0
-    ProcessCommand('#', 'A', 0, (char)('A' + 0), '!');   // CMD = 'A', DATA = 0
+    // -------------------------
+    // Simular comando: #P T X ! (sensor específico - Temperatura)
+    // -------------------------
+    cmd = 'P';
+    data = 'T';  // Temperatura
+    checksum = CalculateChecksum(cmd, data);
 
-    ProcessCommand('#', 'P', 'T', (char)('P' + 'T'), '!'); // CMD = 'P', DATA = 'T'
-    ProcessCommand('#', 'P', 'T', (char)('P' + 'T'), '!'); // CMD = 'P', DATA = 'T'
-	ProcessCommand('#', 'P', 'T', (char)('P' + 'T'), '!'); // CMD = 'P', DATA = 'T'
+    char comando2[] = { '#', cmd, data, checksum, '!' };
+    printf("\n[TESTE 2] Comando 'P T' - Temperatura\n");
+    for (int i = 0; i < 5; i++) {
+        UART_ReceiveChar(comando2[i]);
+    }
 
-    ProcessCommand('#', 'L', 0, (char)('L' + 0), '!');   // CMD = 'L', DATA = 0
-    ProcessCommand('#', 'R', 0, (char)('R' + 0), '!');   // CMD = 'R', DATA = 0
-    ProcessCommand('#', 'L', 0, (char)('L' + 0), '!');   // CMD = 'L', DATA = 0
+    // -------------------------
+    // Simular comando: #P H X ! (sensor específico - Humidade)
+    // -------------------------
+    cmd = 'P';
+    data = 'H';  // Humidade
+    checksum = CalculateChecksum(cmd, data);
+
+    char comando3[] = { '#', cmd, data, checksum, '!' };
+    printf("\n[TESTE 3] Comando 'P H' - Humidade\n");
+    for (int i = 0; i < 5; i++) {
+        UART_ReceiveChar(comando3[i]);
+    }
+
+    // -------------------------
+    // Simular comando: #L X X ! (listar histórico)
+    // -------------------------
+    cmd = 'L';
+    data = 'X';  // qualquer valor
+    checksum = CalculateChecksum(cmd, data);
+
+    char comando4[] = { '#', cmd, data, checksum, '!' };
+    printf("\n[TESTE 4] Comando 'L' - Listar histórico\n");
+    for (int i = 0; i < 5; i++) {
+        UART_ReceiveChar(comando4[i]);
+    }
+
+    // -------------------------
+    // Simular comando: #R X X ! (resetar histórico)
+    // -------------------------
+    cmd = 'R';
+    data = 'X';  // qualquer valor
+    checksum = CalculateChecksum(cmd, data);
+
+    char comando5[] = { '#', cmd, data, checksum, '!' };
+    printf("\n[TESTE 5] Comando 'R' - Reset\n");
+    for (int i = 0; i < 5; i++) {
+        UART_ReceiveChar(comando5[i]);
+    }
+
+    // -------------------------
+    // Simular comando inválido (checksum errado)
+    // -------------------------
+    char comando6[] = { '#', 'P', 'T', 0x00, '!' };  // checksum incorreto
+    printf("\n[TESTE 6] Comando inválido (checksum errado)\n");
+    for (int i = 0; i < 5; i++) {
+        UART_ReceiveChar(comando6[i]);
+    }
 
     return 0;
-    
 }
+
