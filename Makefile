@@ -1,64 +1,65 @@
-# Nome do módulo
-MODULE_NAME = CommandProcessor
+# Makefile for Smart Sensor System
+# Autores: Tomás Gomes [98807], Vasco Pestana [88827]
 
-# Paths
-UNITY_ROOT = Unity
-SRC_FOLDER = .
-TEST_FOLDER = .
+# Compilador e flags
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99 -g
 
-# Commands
-CLEANUP = rm -f
-MKDIR = mkdir -p
+# Diretórios
+UNITY_DIR = Unity/src
+BIN_DIR = bin
+OBJ_DIR = obj
+SRC_DIR = .
 
-# Compiler
-C_COMPILER = gcc
-CFLAGS=-std=c99  
-CFLAGS += -Wall
-CFLAGS += -Wextra
-CFLAGS += -Wpointer-arith
-CFLAGS += -Wcast-align
-CFLAGS += -Wwrite-strings
-CFLAGS += -Wswitch-default
-CFLAGS += -Wunreachable-code
-CFLAGS += -Winit-self
-CFLAGS += -Wmissing-field-initializers
-CFLAGS += -Wno-unknown-pragmas
-CFLAGS += -Wstrict-prototypes
-CFLAGS += -Wundef
-CFLAGS += -Wold-style-definition
+# Lista de arquivos objeto
+OBJS = $(OBJ_DIR)/Command_Processor.o
+MAIN_OBJ = $(OBJ_DIR)/main.o $(OBJ_DIR)/uart_mock.o
+TEST_OBJS = $(OBJ_DIR)/test_CommandProcessor.o $(OBJ_DIR)/unity.o
 
-# Executáveis
-TEST_TARGET = test$(MODULE_NAME)
-MAIN_TARGET = main$(MODULE_NAME)
+# Alvos principais
+all: directories main tests
 
-# Ficheiros fonte
-SRC_FILES=$(UNITY_ROOT)/src/unity.c $(SRC_FOLDER)/Command_Processor.c $(TEST_FOLDER)/test_$(MODULE_NAME).c
-MAIN_FILES=$(SRC_FOLDER)/Command_Processor.c $(SRC_FOLDER)/main.c
+# Criar diretórios necessários
+directories:
+	mkdir -p $(BIN_DIR) $(OBJ_DIR)
 
-# Includes
-INC_DIRS=-I$(SRC_FOLDER) -I$(UNITY_ROOT)/src
-SYMBOLS=
+# Programa principal
+main: $(BIN_DIR)/main
 
-all: clean $(TEST_TARGET) $(MAIN_TARGET) run_tests run_main
+$(BIN_DIR)/main: $(MAIN_OBJ) $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 
-# Compilar os testes
-$(TEST_TARGET): $(SRC_FILES)
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES) -o $(TEST_TARGET)
+# Testes unitários
+tests: $(BIN_DIR)/test_CommandProcessor
 
-# Compilar o programa principal
-$(MAIN_TARGET): $(MAIN_FILES)
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(MAIN_FILES) -o $(MAIN_TARGET)
+$(BIN_DIR)/test_CommandProcessor: $(TEST_OBJS) $(OBJ_DIR)/Command_Processor.o
+	$(CC) $(CFLAGS) -o $@ $^
 
-# Executar os testes
-run_tests: $(TEST_TARGET)
-	./$(TEST_TARGET)
+# Regras de compilação para arquivos objeto
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Executar o programa principal
-run_main: $(MAIN_TARGET)
-	./$(MAIN_TARGET)
+$(OBJ_DIR)/unity.o: $(UNITY_DIR)/unity.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Limpeza dos arquivos gerados
+# Cabeçalhos
+DEPS = Command_Processor.h $(UNITY_DIR)/unity.h
+
+# Garantir que as dependências sejam verificadas
+$(OBJS) $(MAIN_OBJ) $(TEST_OBJS): $(DEPS)
+
+# Executar programa principal
+run: $(BIN_DIR)/main
+	./$(BIN_DIR)/main
+
+# Executar testes
+run-tests: $(BIN_DIR)/test_CommandProcessor
+	./$(BIN_DIR)/test_CommandProcessor
+
+# Limpar arquivos gerados
 clean:
-	$(CLEANUP) $(TEST_TARGET) $(MAIN_TARGET)
+	rm -rf $(BIN_DIR) $(OBJ_DIR)
 
+# Alvos fictícios (não correspondem a arquivos)
+.PHONY: all clean run run-tests directories tests main
 

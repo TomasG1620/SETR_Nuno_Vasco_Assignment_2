@@ -8,8 +8,8 @@
  * @date 2025
  */
 
- #ifndef COMMAND_PROCESSOR_TEST_H
- #define COMMAND_PROCESSOR_TEST_H
+ #ifndef COMMAND_PROCESSOR_H
+ #define COMMAND_PROCESSOR_H
  
  // Declare as funções UART que serão fornecidas por nós
  void UART_SendChar(char c);
@@ -21,6 +21,5 @@
  void UART_ReceiveChar(char c);
  void ProcessCommand(char start_frame, char cmd, char data, char checksum, char end_frame);
  
- #endif /* COMMAND_PROCESSOR_TEST_H */
+ #endif /* COMMAND_PROCESSOR_H */
 
- 

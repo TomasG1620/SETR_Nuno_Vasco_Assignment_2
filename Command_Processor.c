@@ -59,9 +59,6 @@ Descrição:
      return (char)((cmd + data) % 256 );  // Limitar a soma a 8 bits (1 byte)
  }
  
- // NOTA: As funções UART_SendChar e UART_SendString foram removidas
- // e serão fornecidas pelo código de teste
- 
  void UART_ReceiveChar(char c) {
      static char cmd_buffer[CMD_LENGTH];
      static int buffer_index = 0;
@@ -181,5 +178,5 @@ Descrição:
              break;
      }
  }
-
  
+
