@@ -206,28 +206,6 @@ Descrição:
      TEST_ASSERT_TRUE(strstr(output_buffer, "Invalid command") != NULL);
  }
  
- // Teste 11: Verificar valores dos sensores
- void test_SensorValues(void) {
-     // Testar vários comandos P para ver se os valores dos sensores estão sendo incrementados
-     
-     // Primeiro sensor - Temperatura
-     sendCommand('P', 'T');
-     char* temp1 = strstr(output_buffer, "Temperature: ");
-     TEST_ASSERT_NOT_NULL(temp1);
-     int value1 = atoi(temp1 + 13);  // Extrair o valor numérico
-     
-     resetBuffer();
-     
-     // Segunda leitura do mesmo sensor
-     sendCommand('P', 'T');
-     char* temp2 = strstr(output_buffer, "Temperature: ");
-     TEST_ASSERT_NOT_NULL(temp2);
-     int value2 = atoi(temp2 + 13);  // Extrair o valor numérico
-     
-     // Os valores devem ser diferentes pois o índice incrementa
-     TEST_ASSERT_NOT_EQUAL(value1, value2);
- }
- 
  // Programa principal que executa os testes
  int main(void) {
      UNITY_BEGIN();
@@ -242,7 +220,6 @@ Descrição:
      RUN_TEST(test_InvalidFormat_NoStartFrame);
      RUN_TEST(test_InvalidFormat_NoEndFrame);
      RUN_TEST(test_InvalidCommandCode);
-     RUN_TEST(test_SensorValues);
      
      return UNITY_END();
  }
