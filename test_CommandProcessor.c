@@ -166,7 +166,7 @@ Descrição:
      }
      
      // Verificar se a mensagem de erro foi exibida
-     TEST_ASSERT_TRUE(strstr(output_buffer, "Error: Invalid command") != NULL);
+     TEST_ASSERT_TRUE(strstr(output_buffer, "Error: Invalid command structure or incorrect checksum\n") != NULL);
  }
  
  // Teste 8: Comando com formato inválido (sem # no início)
@@ -203,7 +203,7 @@ Descrição:
      sendCommand('Z', 'X');
      
      // Verificar se a mensagem de erro foi exibida
-     TEST_ASSERT_TRUE(strstr(output_buffer, "Invalid command") != NULL);
+     TEST_ASSERT_TRUE(strstr(output_buffer, "Invalid command\n") != NULL);
  }
  
  // Programa principal que executa os testes
