@@ -40,7 +40,7 @@ int main(void) {
     char checksum = CalculateChecksum(cmd, data);
 
     char comando1[] = { '#', cmd, data, checksum, '!' };
-    printf("\n[TESTE 1] Comando 'A' - Todos os sensores\n");
+    printf("\n[TEST 1] Command 'A' - All sensors\n");
     for (int i = 0; i < 5; i++) {
         UART_ReceiveChar(comando1[i]);
     }
@@ -53,7 +53,7 @@ int main(void) {
     checksum = CalculateChecksum(cmd, data);
 
     char comando2[] = { '#', cmd, data, checksum, '!' };
-    printf("\n[TESTE 2] Comando 'P T' - Temperatura\n");
+    printf("\n[TEST 2] Command 'P T' - Temperature\n");
     for (int i = 0; i < 5; i++) {
         UART_ReceiveChar(comando2[i]);
     }
@@ -66,7 +66,7 @@ int main(void) {
     checksum = CalculateChecksum(cmd, data);
 
     char comando3[] = { '#', cmd, data, checksum, '!' };
-    printf("\n[TESTE 3] Comando 'P H' - Humidade\n");
+    printf("\n[TEST 3] Command 'P H' - Humidity\n");
     for (int i = 0; i < 5; i++) {
         UART_ReceiveChar(comando3[i]);
     }
@@ -79,20 +79,20 @@ int main(void) {
     checksum = CalculateChecksum(cmd, data);
 
     char comando4[] = { '#', cmd, data, checksum, '!' };
-    printf("\n[TESTE 4] Comando 'L' - Listar histórico\n");
+    printf("\n[TEST 4] Command 'L' - Last 20 samples\n");
     for (int i = 0; i < 5; i++) {
         UART_ReceiveChar(comando4[i]);
     }
 
     // -------------------------
-    // Simular comando: #R X X ! (resetar histórico)
+    // Simular comando: #R X X ! (reset no histórico)
     // -------------------------
     cmd = 'R';
     data = 'X';  // qualquer valor
     checksum = CalculateChecksum(cmd, data);
 
     char comando5[] = { '#', cmd, data, checksum, '!' };
-    printf("\n[TESTE 5] Comando 'R' - Reset\n");
+    printf("\n[TEST 5] Command 'R' - Reset\n");
     for (int i = 0; i < 5; i++) {
         UART_ReceiveChar(comando5[i]);
     }
@@ -101,7 +101,7 @@ int main(void) {
     // Simular comando inválido (checksum errado)
     // -------------------------
     char comando6[] = { '#', 'P', 'T', 0x00, '!' };  // checksum incorreto
-    printf("\n[TESTE 6] Comando inválido (checksum errado)\n");
+    printf("\n[TEST 6] Invalid Command (wrong checksum)\n");
     for (int i = 0; i < 5; i++) {
         UART_ReceiveChar(comando6[i]);
     }
