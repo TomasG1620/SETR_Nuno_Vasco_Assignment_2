@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['calculatechecksum_0',['calculatechecksum',['../Command__Processor_8c.html#a2d125587a91b263be469343779a11a3a',1,'CalculateChecksum(char cmd, char data):&#160;Command_Processor.c'],['../Command__Processor_8h.html#a2d125587a91b263be469343779a11a3a',1,'CalculateChecksum(char cmd, char data):&#160;Command_Processor.c']]],
-  ['commandprocessorinit_1',['commandprocessorinit',['../Command__Processor_8c.html#af2570ae1b0a1e72a7e85de23ed12a854',1,'CommandProcessorInit(void):&#160;Command_Processor.c'],['../Command__Processor_8h.html#af2570ae1b0a1e72a7e85de23ed12a854',1,'CommandProcessorInit(void):&#160;Command_Processor.c']]]
+  ['uart_5fsendchar_0',['UART_SendChar',['../uart__mock_8c.html#a4a3cfbee206d916c5738bd0b14af5424',1,'uart_mock.c']]],
+  ['uart_5fsendstring_1',['UART_SendString',['../uart__mock_8c.html#a3d54817ce5409ef5576568ca41cce6ed',1,'uart_mock.c']]]
 ];

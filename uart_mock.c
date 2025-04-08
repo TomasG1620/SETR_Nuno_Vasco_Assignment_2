@@ -8,12 +8,26 @@
 
 #include <stdio.h>
 
-// Mock para UART_SendChar - imprime na saída padrão
+/**
+ * @brief Simula o envio de um caractere pela UART.
+ * 
+ * Esta função simula o comportamento da UART imprimindo o caractere
+ * fornecido na saída padrão.
+ * 
+ * @param c Caractere a ser enviado.
+ */
 void UART_SendChar(char c) {
     printf("%c", c);
 }
 
-// Mock para UART_SendString - imprime na saída padrão
+/**
+ * @brief Simula o envio de uma string pela UART.
+ * 
+ * Esta função simula o comportamento da UART imprimindo a string
+ * fornecida na saída padrão.
+ * 
+ * @param str Ponteiro para a string a ser enviada.
+ */
 void UART_SendString(const char* str) {
     printf("%s", str);
 }

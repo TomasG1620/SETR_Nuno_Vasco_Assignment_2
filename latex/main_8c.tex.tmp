@@ -1,0 +1,36 @@
+\doxysection{main.\+c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{main.c@{main.c}}
+
+
+Programa principal para o processador de comandos de sensores inteligentes.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}Command\+\_\+\+Processor.\+h"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+int {\bfseries main} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Programa principal para o processador de comandos de sensores inteligentes. 
+
+Este programa inicializa o processador de comandos e executa exemplos de comandos válidos com diferentes funcionalidades, como leitura de sensores e histórico.
+
+\begin{DoxyAuthor}{Authors}
+
+\begin{DoxyItemize}
+\item Tomás Gomes \mbox{[}98807\mbox{]} ~\newline
+
+\item Vasco Pestana \mbox{[}88827\mbox{]} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}

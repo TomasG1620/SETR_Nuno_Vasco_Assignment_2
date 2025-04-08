@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "cmpsu",
-  1: "cm",
-  2: "cpu",
+  0: "mstu",
+  1: "mtu",
+  2: "u",
   3: "s"
 };
 

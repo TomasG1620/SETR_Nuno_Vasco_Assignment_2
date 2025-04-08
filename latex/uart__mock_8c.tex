@@ -1,0 +1,59 @@
+\doxysection{uart\+\_\+mock.\+c File Reference}
+\hypertarget{uart__mock_8c}{}\label{uart__mock_8c}\index{uart\_mock.c@{uart\_mock.c}}
+
+
+Implementação de mock das funções UART para compilação do programa principal.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for uart\+\_\+mock.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{uart__mock_8c_a4a3cfbee206d916c5738bd0b14af5424}{UART\+\_\+\+Send\+Char}} (char c)
+\begin{DoxyCompactList}\small\item\em Simula o envio de um caractere pela UART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart__mock_8c_a3d54817ce5409ef5576568ca41cce6ed}{UART\+\_\+\+Send\+String}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Simula o envio de uma string pela UART. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação de mock das funções UART para compilação do programa principal. 
+
+Este arquivo fornece implementações básicas de UART\+\_\+\+Send\+Char e UART\+\_\+\+Send\+String para permitir que o programa principal seja compilado e executado. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{uart__mock_8c_a4a3cfbee206d916c5738bd0b14af5424}\label{uart__mock_8c_a4a3cfbee206d916c5738bd0b14af5424} 
+\index{uart\_mock.c@{uart\_mock.c}!UART\_SendChar@{UART\_SendChar}}
+\index{UART\_SendChar@{UART\_SendChar}!uart\_mock.c@{uart\_mock.c}}
+\doxysubsubsection{\texorpdfstring{UART\_SendChar()}{UART\_SendChar()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+Char (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Simula o envio de um caractere pela UART. 
+
+Esta função simula o comportamento da UART imprimindo o caractere fornecido na saída padrão.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caractere a ser enviado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{uart__mock_8c_a3d54817ce5409ef5576568ca41cce6ed}\label{uart__mock_8c_a3d54817ce5409ef5576568ca41cce6ed} 
+\index{uart\_mock.c@{uart\_mock.c}!UART\_SendString@{UART\_SendString}}
+\index{UART\_SendString@{UART\_SendString}!uart\_mock.c@{uart\_mock.c}}
+\doxysubsubsection{\texorpdfstring{UART\_SendString()}{UART\_SendString()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Simula o envio de uma string pela UART. 
+
+Esta função simula o comportamento da UART imprimindo a string fornecida na saída padrão.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Ponteiro para a string a ser enviada. \\
+\hline
+\end{DoxyParams}

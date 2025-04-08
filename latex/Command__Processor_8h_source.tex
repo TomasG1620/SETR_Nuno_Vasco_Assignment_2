@@ -1,32 +1,24 @@
 \doxysection{Command\+\_\+\+Processor.\+h}
-\hypertarget{Command__Processor_8h_source}{}\label{Command__Processor_8h_source}\mbox{\hyperlink{Command__Processor_8h}{Go to the documentation of this file.}}
+\hypertarget{Command__Processor_8h_source}{}\label{Command__Processor_8h_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{/*\ \ Assignment\ 2\ -\/\ Sistemas\ Embutidos\ e\ de\ Tempo\ Real}}
-\DoxyCodeLine{00002\ \textcolor{comment}{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
-\DoxyCodeLine{00003\ \textcolor{comment}{Autores:\ Tomás\ Gomes\ \ \ [98807]}}
-\DoxyCodeLine{00004\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ Vasco\ Pestana\ [88827]}}
-\DoxyCodeLine{00005\ \textcolor{comment}{}}
-\DoxyCodeLine{00006\ \textcolor{comment}{Descrição:}}
-\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ \ \ \ \ \ -\/>\ Implementação\ de\ um\ módulo\ em\ C\ que\ processa\ comandos\ que\ são\ recebidos\ em\ UART\ }}
-\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ \ \ \ \ \ (um\ caratér\ de\ cada\ vez).\ O\ módulo\ faz\ parte\ de\ um\ sensor\ inteligente,\ capaz\ de\ medir}}
-\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ \ \ \ \ temperatura(-\/50ºC\ ...\ 60ºC),\ humidade(0\ ...\ 100\%)\ e\ CO2\ (400\ ...\ 20000\ ppm).}}
-\DoxyCodeLine{00010\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ COMMAND\_PROCESSOR\_H\ \ }}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ COMMAND\_PROCESSOR\_H\ }}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854}{CommandProcessorInit}}(\textcolor{keywordtype}{void});\ }
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00044\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{Command__Processor_8h_a2d125587a91b263be469343779a11a3a}{CalculateChecksum}}(\textcolor{keywordtype}{char}\ cmd,\ \textcolor{keywordtype}{char}\ data);}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Command__Processor_8h_a4a3cfbee206d916c5738bd0b14af5424}{UART\_SendChar}}(\textcolor{keywordtype}{char}\ c);}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Command__Processor_8h_a3d54817ce5409ef5576568ca41cce6ed}{UART\_SendString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Command__Processor_8h_a73ec1aa0ccac25eb780df23a1f3339c7}{UART\_ReceiveChar}}(\textcolor{keywordtype}{char}\ c);}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028}{ProcessCommand}}(\textcolor{keywordtype}{char}\ start\_frame,\ \textcolor{keywordtype}{char}\ cmd,\ \textcolor{keywordtype}{char}\ data,\ \textcolor{keywordtype}{char}\ checksum,\ \textcolor{keywordtype}{char}\ end\_frame);}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \#ifndef\ COMMAND\_PROCESSOR\_H}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \#define\ COMMAND\_PROCESSOR\_H}}
+\DoxyCodeLine{00013\ \ }
+\DoxyCodeLine{00014\ \ \textcolor{comment}{//\ Declare\ as\ funções\ UART\ que\ serão\ fornecidas\ por\ nós}}
+\DoxyCodeLine{00015\ \ \textcolor{keywordtype}{void}\ UART\_SendChar(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00016\ \ \textcolor{keywordtype}{void}\ UART\_SendString(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00017\ \ }
+\DoxyCodeLine{00018\ \ \textcolor{comment}{//\ Funções\ do\ Command\_Processor}}
+\DoxyCodeLine{00019\ \ \textcolor{keywordtype}{void}\ CommandProcessorInit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00028\ \ \textcolor{keywordtype}{char}\ CalculateChecksum(\textcolor{keywordtype}{char}\ cmd,\ \textcolor{keywordtype}{char}\ data);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \textcolor{keywordtype}{void}\ UART\_ReceiveChar(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00046\ \ \textcolor{keywordtype}{void}\ ProcessCommand(\textcolor{keywordtype}{char}\ start\_frame,\ \textcolor{keywordtype}{char}\ cmd,\ \textcolor{keywordtype}{char}\ data,\ \textcolor{keywordtype}{char}\ checksum,\ \textcolor{keywordtype}{char}\ end\_frame);}
+\DoxyCodeLine{00047\ \ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \#endif\ }\textcolor{comment}{/*\ COMMAND\_PROCESSOR\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00049\ }
 
 \end{DoxyCode}

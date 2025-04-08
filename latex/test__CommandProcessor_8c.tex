@@ -1,0 +1,104 @@
+\doxysection{test\+\_\+\+Command\+Processor.\+c File Reference}
+\hypertarget{test__CommandProcessor_8c}{}\label{test__CommandProcessor_8c}\index{test\_CommandProcessor.c@{test\_CommandProcessor.c}}
+
+
+Testes unitários para o processador de comandos de sensores inteligentes.  
+
+
+{\ttfamily \#include "{}Unity/src/unity.\+h"{}}\newline
+{\ttfamily \#include "{}Command\+\_\+\+Processor.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for test\+\_\+\+Command\+Processor.\+c\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{test__CommandProcessor_8c_ad4d796b98c583d49e83adabd74a63bf6}\label{test__CommandProcessor_8c_ad4d796b98c583d49e83adabd74a63bf6} 
+\#define {\bfseries MAX\+\_\+\+BUFFER\+\_\+\+SIZE}~2048
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{test__CommandProcessor_8c_a8765f1344e57db0a3e0c798c9ac6a1fe}\label{test__CommandProcessor_8c_a8765f1344e57db0a3e0c798c9ac6a1fe} 
+void {\bfseries reset\+Buffer} ()
+\item 
+\Hypertarget{test__CommandProcessor_8c_a4a3cfbee206d916c5738bd0b14af5424}\label{test__CommandProcessor_8c_a4a3cfbee206d916c5738bd0b14af5424} 
+void {\bfseries UART\+\_\+\+Send\+Char} (char c)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a3d54817ce5409ef5576568ca41cce6ed}\label{test__CommandProcessor_8c_a3d54817ce5409ef5576568ca41cce6ed} 
+void {\bfseries UART\+\_\+\+Send\+String} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a95c834d6178047ce9e1bce7cbfea2836}\label{test__CommandProcessor_8c_a95c834d6178047ce9e1bce7cbfea2836} 
+void {\bfseries set\+Up} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a9909011e5fea0c018842eec4d93d0662}\label{test__CommandProcessor_8c_a9909011e5fea0c018842eec4d93d0662} 
+void {\bfseries tear\+Down} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_ab0e6e729154d290e5f88f0a24e4b6bd3}\label{test__CommandProcessor_8c_ab0e6e729154d290e5f88f0a24e4b6bd3} 
+void {\bfseries send\+Command} (char cmd, char data)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a3c5af1bdcb9ca09b9efd692eb4a4c891}\label{test__CommandProcessor_8c_a3c5af1bdcb9ca09b9efd692eb4a4c891} 
+void {\bfseries test\+\_\+\+Command\+A\+\_\+\+All\+Sensors} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a9e19c74cb301c023458cd1d85b8afbdc}\label{test__CommandProcessor_8c_a9e19c74cb301c023458cd1d85b8afbdc} 
+void {\bfseries test\+\_\+\+Command\+P\+\_\+\+Temperature} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a654f462997f6b94ac5d70f14060fc2b1}\label{test__CommandProcessor_8c_a654f462997f6b94ac5d70f14060fc2b1} 
+void {\bfseries test\+\_\+\+Command\+P\+\_\+\+Humidity} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_aeaf2e7099dcad2a03278477b34d482bf}\label{test__CommandProcessor_8c_aeaf2e7099dcad2a03278477b34d482bf} 
+void {\bfseries test\+\_\+\+Command\+P\+\_\+\+CO2} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a651e9c6a37c138620925f5e88ae2ca8f}\label{test__CommandProcessor_8c_a651e9c6a37c138620925f5e88ae2ca8f} 
+void {\bfseries test\+\_\+\+Command\+L\+\_\+\+List\+History} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a79d8577f4db1fc7737a02972ea349195}\label{test__CommandProcessor_8c_a79d8577f4db1fc7737a02972ea349195} 
+void {\bfseries test\+\_\+\+Command\+R\+\_\+\+Reset} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a79d4581698e66dc14c36664e8da4cb31}\label{test__CommandProcessor_8c_a79d4581698e66dc14c36664e8da4cb31} 
+void {\bfseries test\+\_\+\+Invalid\+Checksum} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_aac947832771f508d69079dbd1e40959c}\label{test__CommandProcessor_8c_aac947832771f508d69079dbd1e40959c} 
+void {\bfseries test\+\_\+\+Invalid\+Format\+\_\+\+No\+Start\+Frame} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_adac0bbd6cf400f63fa48658b0180026a}\label{test__CommandProcessor_8c_adac0bbd6cf400f63fa48658b0180026a} 
+void {\bfseries test\+\_\+\+Invalid\+Format\+\_\+\+No\+End\+Frame} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_aa474593633e476f644eed4887f708922}\label{test__CommandProcessor_8c_aa474593633e476f644eed4887f708922} 
+void {\bfseries test\+\_\+\+Invalid\+Command\+Code} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a6ed4dc6293a94bf5540581060b1f92d1}\label{test__CommandProcessor_8c_a6ed4dc6293a94bf5540581060b1f92d1} 
+void {\bfseries test\+\_\+\+Sensor\+Values} (void)
+\item 
+\Hypertarget{test__CommandProcessor_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{test__CommandProcessor_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+int {\bfseries main} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{test__CommandProcessor_8c_ace71bcdc166c71494111614aeb839502}\label{test__CommandProcessor_8c_ace71bcdc166c71494111614aeb839502} 
+char {\bfseries output\+\_\+buffer} \mbox{[}MAX\+\_\+\+BUFFER\+\_\+\+SIZE\mbox{]}
+\item 
+\Hypertarget{test__CommandProcessor_8c_af87d7d60451142886358a52635245882}\label{test__CommandProcessor_8c_af87d7d60451142886358a52635245882} 
+int {\bfseries buffer\+\_\+position} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Testes unitários para o processador de comandos de sensores inteligentes. 
+
+Este arquivo contém testes unitários usando o framework Unity para validar o comportamento do processador de comandos.
+
+\begin{DoxyAuthor}{Authors}
+
+\begin{DoxyItemize}
+\item Tomás Gomes \mbox{[}98807\mbox{]} ~\newline
+
+\item Vasco Pestana \mbox{[}88827\mbox{]} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}

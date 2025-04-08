@@ -43,9 +43,9 @@ Descrição:
  
  // Função para inicializar o processador de comandos
  
- /** 
-  * @brief Inicializa o processador de comandos.
-  */
+/**
+ * @brief Inicializa o processador de comandos e os históricos.
+ */
  
  void CommandProcessorInit(void) {
      memset(temp_history, 0, sizeof(temp_history));
@@ -54,11 +54,22 @@ Descrição:
      printf("Command Processor initialized!\n");
  }
  
- // Função para calcular o checksum (CMD + DATA)
+/**
+ * @brief Calcula o checksum com base no comando e no dado.
+ * 
+ * @param cmd  Comando recebido (ex: 'A', 'P'…)
+ * @param data Dado associado ao comando (ex: 'T', 'H', 'C')
+ * @return Checksum calculado (1 byte)
+ */
  char CalculateChecksum(char cmd, char data) {
      return (char)((cmd + data) % 256 );  // Limitar a soma a 8 bits (1 byte)
  }
  
+ /**
+ * @brief Recebe caracteres da UART um por um e reconstrói comandos completos.
+ * 
+ * @param c Caractere recebido da UART
+ */
  void UART_ReceiveChar(char c) {
      static char cmd_buffer[CMD_LENGTH];
      static int buffer_index = 0;
@@ -86,7 +97,16 @@ Descrição:
      }
  }
  
- // Processar o comando, validando ASCII, checksum e estrutura correta
+
+/**
+ * @brief Processa comandos válidos e executa ações conforme o tipo de comando.
+ * 
+ * @param start_frame Caractere inicial esperado ('#')
+ * @param cmd Comando (ex: 'A', 'P', 'L', 'R')
+ * @param data Dado complementar ao comando (ex: 'T' para temperatura)
+ * @param checksum Checksum recebido
+ * @param end_frame Caractere final esperado ('!')
+ */
  void ProcessCommand(char start_frame, char cmd, char data, char checksum, char end_frame) {
      char buffer[100];
  
