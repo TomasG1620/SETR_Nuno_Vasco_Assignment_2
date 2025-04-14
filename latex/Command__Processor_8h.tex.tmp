@@ -1,0 +1,159 @@
+\doxysection{Command\+\_\+\+Processor.\+h File Reference}
+\hypertarget{Command__Processor_8h}{}\label{Command__Processor_8h}\index{Command\_Processor.h@{Command\_Processor.h}}
+
+
+Interface do processador de comandos para testes.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{Command__Processor_8h_a4a3cfbee206d916c5738bd0b14af5424}{UART\+\_\+\+Send\+Char}} (char c)
+\begin{DoxyCompactList}\small\item\em Envia um único caractere pela UART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8h_a3d54817ce5409ef5576568ca41cce6ed}{UART\+\_\+\+Send\+String}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Envia uma string pela UART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854}{Command\+Processor\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa o processador de comandos. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{Command__Processor_8h_a2d125587a91b263be469343779a11a3a}{Calculate\+Checksum}} (char cmd, char data)
+\begin{DoxyCompactList}\small\item\em Calcula o checksum com base no comando e no dado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8h_a73ec1aa0ccac25eb780df23a1f3339c7}{UART\+\_\+\+Receive\+Char}} (char c)
+\begin{DoxyCompactList}\small\item\em Recebe caracteres da UART um por um e reconstrói comandos completos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028}{Process\+Command}} (char start\+\_\+frame, char cmd, char data, char checksum, char end\+\_\+frame)
+\begin{DoxyCompactList}\small\item\em Processa comandos válidos e executa ações conforme o tipo de comando. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface do processador de comandos para testes. 
+
+\begin{DoxyAuthor}{Authors}
+
+\begin{DoxyItemize}
+\item Tomás Gomes \mbox{[}98807\mbox{]} ~\newline
+
+\item Vasco Pestana \mbox{[}88827\mbox{]} 
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Command__Processor_8h_a2d125587a91b263be469343779a11a3a}\label{Command__Processor_8h_a2d125587a91b263be469343779a11a3a} 
+\index{Command\_Processor.h@{Command\_Processor.h}!CalculateChecksum@{CalculateChecksum}}
+\index{CalculateChecksum@{CalculateChecksum}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{CalculateChecksum()}{CalculateChecksum()}}
+{\footnotesize\ttfamily char Calculate\+Checksum (\begin{DoxyParamCaption}\item[{char}]{cmd,  }\item[{char}]{data }\end{DoxyParamCaption})}
+
+
+
+Calcula o checksum com base no comando e no dado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & Comando recebido (ex\+: \textquotesingle{}A\textquotesingle{}, \textquotesingle{}P\textquotesingle{}…) \\
+\hline
+{\em data} & Dado associado ao comando (ex\+: \textquotesingle{}T\textquotesingle{}, \textquotesingle{}H\textquotesingle{}, \textquotesingle{}C\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Checksum calculado (1 byte) 
+\end{DoxyReturn}
+\Hypertarget{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854}\label{Command__Processor_8h_af2570ae1b0a1e72a7e85de23ed12a854} 
+\index{Command\_Processor.h@{Command\_Processor.h}!CommandProcessorInit@{CommandProcessorInit}}
+\index{CommandProcessorInit@{CommandProcessorInit}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{CommandProcessorInit()}{CommandProcessorInit()}}
+{\footnotesize\ttfamily void Command\+Processor\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Inicializa o processador de comandos. 
+
+Inicializa o processador de comandos. \Hypertarget{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028}\label{Command__Processor_8h_a09f3672776b6369aaaa718742da0f028} 
+\index{Command\_Processor.h@{Command\_Processor.h}!ProcessCommand@{ProcessCommand}}
+\index{ProcessCommand@{ProcessCommand}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{ProcessCommand()}{ProcessCommand()}}
+{\footnotesize\ttfamily void Process\+Command (\begin{DoxyParamCaption}\item[{char}]{start\+\_\+frame,  }\item[{char}]{cmd,  }\item[{char}]{data,  }\item[{char}]{checksum,  }\item[{char}]{end\+\_\+frame }\end{DoxyParamCaption})}
+
+
+
+Processa comandos válidos e executa ações conforme o tipo de comando. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+frame} & Caractere inicial esperado (\textquotesingle{}\#\textquotesingle{}) \\
+\hline
+{\em cmd} & Comando (ex\+: \textquotesingle{}A\textquotesingle{}, \textquotesingle{}P\textquotesingle{}, \textquotesingle{}L\textquotesingle{}, \textquotesingle{}R\textquotesingle{}) \\
+\hline
+{\em data} & Dado complementar ao comando (ex\+: \textquotesingle{}T\textquotesingle{} para temperatura) \\
+\hline
+{\em checksum} & Checksum recebido \\
+\hline
+{\em end\+\_\+frame} & Caractere final esperado (\textquotesingle{}!\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Command__Processor_8h_a73ec1aa0ccac25eb780df23a1f3339c7}\label{Command__Processor_8h_a73ec1aa0ccac25eb780df23a1f3339c7} 
+\index{Command\_Processor.h@{Command\_Processor.h}!UART\_ReceiveChar@{UART\_ReceiveChar}}
+\index{UART\_ReceiveChar@{UART\_ReceiveChar}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveChar()}{UART\_ReceiveChar()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Receive\+Char (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Recebe caracteres da UART um por um e reconstrói comandos completos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caractere recebido da UART \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Command__Processor_8h_a4a3cfbee206d916c5738bd0b14af5424}\label{Command__Processor_8h_a4a3cfbee206d916c5738bd0b14af5424} 
+\index{Command\_Processor.h@{Command\_Processor.h}!UART\_SendChar@{UART\_SendChar}}
+\index{UART\_SendChar@{UART\_SendChar}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{UART\_SendChar()}{UART\_SendChar()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+Char (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Envia um único caractere pela UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caractere a ser enviado\\
+\hline
+\end{DoxyParams}
+Envia um único caractere pela UART.
+
+Esta função simula o comportamento da UART imprimindo o caractere fornecido na saída padrão.
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caractere a ser enviado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Command__Processor_8h_a3d54817ce5409ef5576568ca41cce6ed}\label{Command__Processor_8h_a3d54817ce5409ef5576568ca41cce6ed} 
+\index{Command\_Processor.h@{Command\_Processor.h}!UART\_SendString@{UART\_SendString}}
+\index{UART\_SendString@{UART\_SendString}!Command\_Processor.h@{Command\_Processor.h}}
+\doxysubsubsection{\texorpdfstring{UART\_SendString()}{UART\_SendString()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Envia uma string pela UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Ponteiro para a string a ser enviada\\
+\hline
+\end{DoxyParams}
+Envia uma string pela UART.
+
+Esta função simula o comportamento da UART imprimindo a string fornecida na saída padrão.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Ponteiro para a string a ser enviada. \\
+\hline
+\end{DoxyParams}

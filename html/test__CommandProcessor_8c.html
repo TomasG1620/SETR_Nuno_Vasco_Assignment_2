@@ -80,7 +80,7 @@ $(function() {
 <p>Testes unitários para o processador de comandos de sensores inteligentes.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;Unity/src/unity.h&quot;</code><br />
-<code>#include &quot;Command_Processor.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="Command__Processor_8h_source.html">Command_Processor.h</a>&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -101,11 +101,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a8765f1344e57db0a3e0c798c9ac6a1fe" id="r_a8765f1344e57db0a3e0c798c9ac6a1fe"><td class="memItemLeft" align="right" valign="top"><a id="a8765f1344e57db0a3e0c798c9ac6a1fe" name="a8765f1344e57db0a3e0c798c9ac6a1fe"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>resetBuffer</b> ()</td></tr>
 <tr class="separator:a8765f1344e57db0a3e0c798c9ac6a1fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a3cfbee206d916c5738bd0b14af5424" id="r_a4a3cfbee206d916c5738bd0b14af5424"><td class="memItemLeft" align="right" valign="top"><a id="a4a3cfbee206d916c5738bd0b14af5424" name="a4a3cfbee206d916c5738bd0b14af5424"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UART_SendChar</b> (char c)</td></tr>
+<tr class="memitem:a4a3cfbee206d916c5738bd0b14af5424" id="r_a4a3cfbee206d916c5738bd0b14af5424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__CommandProcessor_8c.html#a4a3cfbee206d916c5738bd0b14af5424">UART_SendChar</a> (char c)</td></tr>
+<tr class="memdesc:a4a3cfbee206d916c5738bd0b14af5424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia um único caractere pela UART.  <br /></td></tr>
 <tr class="separator:a4a3cfbee206d916c5738bd0b14af5424"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d54817ce5409ef5576568ca41cce6ed" id="r_a3d54817ce5409ef5576568ca41cce6ed"><td class="memItemLeft" align="right" valign="top"><a id="a3d54817ce5409ef5576568ca41cce6ed" name="a3d54817ce5409ef5576568ca41cce6ed"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>UART_SendString</b> (const char *str)</td></tr>
+<tr class="memitem:a3d54817ce5409ef5576568ca41cce6ed" id="r_a3d54817ce5409ef5576568ca41cce6ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__CommandProcessor_8c.html#a3d54817ce5409ef5576568ca41cce6ed">UART_SendString</a> (const char *str)</td></tr>
+<tr class="memdesc:a3d54817ce5409ef5576568ca41cce6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia uma string pela UART.  <br /></td></tr>
 <tr class="separator:a3d54817ce5409ef5576568ca41cce6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95c834d6178047ce9e1bce7cbfea2836" id="r_a95c834d6178047ce9e1bce7cbfea2836"><td class="memItemLeft" align="right" valign="top"><a id="a95c834d6178047ce9e1bce7cbfea2836" name="a95c834d6178047ce9e1bce7cbfea2836"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setUp</b> (void)</td></tr>
@@ -146,9 +146,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>test_InvalidFormat_No
 <tr class="memitem:aa474593633e476f644eed4887f708922" id="r_aa474593633e476f644eed4887f708922"><td class="memItemLeft" align="right" valign="top"><a id="aa474593633e476f644eed4887f708922" name="aa474593633e476f644eed4887f708922"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>test_InvalidCommandCode</b> (void)</td></tr>
 <tr class="separator:aa474593633e476f644eed4887f708922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ed4dc6293a94bf5540581060b1f92d1" id="r_a6ed4dc6293a94bf5540581060b1f92d1"><td class="memItemLeft" align="right" valign="top"><a id="a6ed4dc6293a94bf5540581060b1f92d1" name="a6ed4dc6293a94bf5540581060b1f92d1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>test_SensorValues</b> (void)</td></tr>
-<tr class="separator:a6ed4dc6293a94bf5540581060b1f92d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe" id="r_a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top"><a id="a840291bc02cba5474a4cb46a9b9566fe" name="a840291bc02cba5474a4cb46a9b9566fe"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (void)</td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,7 +169,60 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_position</b> = 
 </ul>
 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a4a3cfbee206d916c5738bd0b14af5424" name="a4a3cfbee206d916c5738bd0b14af5424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a3cfbee206d916c5738bd0b14af5424">&#9670;&#160;</a></span>UART_SendChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UART_SendChar </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envia um único caractere pela UART. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Caractere a ser enviado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3d54817ce5409ef5576568ca41cce6ed" name="a3d54817ce5409ef5576568ca41cce6ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d54817ce5409ef5576568ca41cce6ed">&#9670;&#160;</a></span>UART_SendString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UART_SendString </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envia uma string pela UART. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Ponteiro para a string a ser enviada </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

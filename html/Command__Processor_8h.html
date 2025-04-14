@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Cabeçalho do processador de comandos para sensores inteligentes.  
+<p>Interface do processador de comandos para testes.  
 <a href="#details">More...</a></p>
 <div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -87,28 +87,27 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a4a3cfbee206d916c5738bd0b14af5424" id="r_a4a3cfbee206d916c5738bd0b14af5424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#a4a3cfbee206d916c5738bd0b14af5424">UART_SendChar</a> (char c)</td></tr>
+<tr class="memdesc:a4a3cfbee206d916c5738bd0b14af5424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia um único caractere pela UART.  <br /></td></tr>
+<tr class="separator:a4a3cfbee206d916c5738bd0b14af5424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d54817ce5409ef5576568ca41cce6ed" id="r_a3d54817ce5409ef5576568ca41cce6ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#a3d54817ce5409ef5576568ca41cce6ed">UART_SendString</a> (const char *str)</td></tr>
+<tr class="memdesc:a3d54817ce5409ef5576568ca41cce6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia uma string pela UART.  <br /></td></tr>
+<tr class="separator:a3d54817ce5409ef5576568ca41cce6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2570ae1b0a1e72a7e85de23ed12a854" id="r_af2570ae1b0a1e72a7e85de23ed12a854"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#af2570ae1b0a1e72a7e85de23ed12a854">CommandProcessorInit</a> (void)</td></tr>
 <tr class="memdesc:af2570ae1b0a1e72a7e85de23ed12a854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa o processador de comandos.  <br /></td></tr>
 <tr class="separator:af2570ae1b0a1e72a7e85de23ed12a854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d125587a91b263be469343779a11a3a" id="r_a2d125587a91b263be469343779a11a3a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#a2d125587a91b263be469343779a11a3a">CalculateChecksum</a> (char cmd, char data)</td></tr>
-<tr class="memdesc:a2d125587a91b263be469343779a11a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o checksum de um comando.  <br /></td></tr>
+<tr class="memdesc:a2d125587a91b263be469343779a11a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o checksum com base no comando e no dado.  <br /></td></tr>
 <tr class="separator:a2d125587a91b263be469343779a11a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a3cfbee206d916c5738bd0b14af5424" id="r_a4a3cfbee206d916c5738bd0b14af5424"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#a4a3cfbee206d916c5738bd0b14af5424">UART_SendChar</a> (char c)</td></tr>
-<tr class="memdesc:a4a3cfbee206d916c5738bd0b14af5424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envio caractere a caractere.  <br /></td></tr>
-<tr class="separator:a4a3cfbee206d916c5738bd0b14af5424"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d54817ce5409ef5576568ca41cce6ed" id="r_a3d54817ce5409ef5576568ca41cce6ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#a3d54817ce5409ef5576568ca41cce6ed">UART_SendString</a> (const char *str)</td></tr>
-<tr class="memdesc:a3d54817ce5409ef5576568ca41cce6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envio de uma string caractere a caractere.  <br /></td></tr>
-<tr class="separator:a3d54817ce5409ef5576568ca41cce6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73ec1aa0ccac25eb780df23a1f3339c7" id="r_a73ec1aa0ccac25eb780df23a1f3339c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#a73ec1aa0ccac25eb780df23a1f3339c7">UART_ReceiveChar</a> (char c)</td></tr>
-<tr class="memdesc:a73ec1aa0ccac25eb780df23a1f3339c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Buffer para receber e guardar os 5 caracteres do comando.  <br /></td></tr>
+<tr class="memdesc:a73ec1aa0ccac25eb780df23a1f3339c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recebe caracteres da UART um por um e reconstrói comandos completos.  <br /></td></tr>
 <tr class="separator:a73ec1aa0ccac25eb780df23a1f3339c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09f3672776b6369aaaa718742da0f028" id="r_a09f3672776b6369aaaa718742da0f028"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Command__Processor_8h.html#a09f3672776b6369aaaa718742da0f028">ProcessCommand</a> (char start_frame, char cmd, char data, char checksum, char end_frame)</td></tr>
-<tr class="memdesc:a09f3672776b6369aaaa718742da0f028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processa e valida um comando recebido.  <br /></td></tr>
+<tr class="memdesc:a09f3672776b6369aaaa718742da0f028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processa comandos válidos e executa ações conforme o tipo de comando.  <br /></td></tr>
 <tr class="separator:a09f3672776b6369aaaa718742da0f028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Cabeçalho do processador de comandos para sensores inteligentes. </p>
-<p>Este cabeçalho contém as definições de funções utilizadas para processar comandos recebidos via UART, validando comandos, verificando checksums e armazenando histórico.</p>
+<div class="textblock"><p>Interface do processador de comandos para testes. </p>
 <dl class="section author"><dt>Authors</dt><dd><ul>
 <li>Tomás Gomes [98807] <br  />
 </li>
@@ -143,15 +142,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calcula o checksum de um comando. </p>
+<p>Calcula o checksum com base no comando e no dado. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cmd</td><td>Caractere representando o comando. </td></tr>
-    <tr><td class="paramname">data</td><td>Caractere representando os dados. </td></tr>
+    <tr><td class="paramname">cmd</td><td>Comando recebido (ex: 'A', 'P'…) </td></tr>
+    <tr><td class="paramname">data</td><td>Dado associado ao comando (ex: 'T', 'H', 'C') </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>char Checksum calculado (1 byte). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Checksum calculado (1 byte) </dd></dl>
 
 </div>
 </div>
@@ -172,7 +171,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inicializa o processador de comandos. </p>
-<p>Esta função inicializa o histórico e define os valores iniciais dos sensores. </p>
+<p>Inicializa o processador de comandos. </p>
 
 </div>
 </div>
@@ -220,15 +219,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Processa e valida um comando recebido. </p>
-<p>Esta função processa um comando recebido, verificando a estrutura e o checksum. Se o comando for válido, ele executa as funções apropriadas.</p>
+<p>Processa comandos válidos e executa ações conforme o tipo de comando. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">start_frame</td><td>Caractere de início do comando (esperado '#'). </td></tr>
-    <tr><td class="paramname">cmd</td><td>Caractere representando o comando. </td></tr>
-    <tr><td class="paramname">data</td><td>Dados do comando. </td></tr>
-    <tr><td class="paramname">checksum</td><td>Checksum do comando (para validação). </td></tr>
-    <tr><td class="paramname">end_frame</td><td>Caractere de fim do comando (esperado '!'). </td></tr>
+    <tr><td class="paramname">start_frame</td><td>Caractere inicial esperado ('#') </td></tr>
+    <tr><td class="paramname">cmd</td><td>Comando (ex: 'A', 'P', 'L', 'R') </td></tr>
+    <tr><td class="paramname">data</td><td>Dado complementar ao comando (ex: 'T' para temperatura) </td></tr>
+    <tr><td class="paramname">checksum</td><td>Checksum recebido </td></tr>
+    <tr><td class="paramname">end_frame</td><td>Caractere final esperado ('!') </td></tr>
   </table>
   </dd>
 </dl>
@@ -251,11 +249,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Buffer para receber e guardar os 5 caracteres do comando. </p>
-<p>Esta função recebe um caractere de cada vez e ao receber o '#' guarda os 4 próximos caracteres para depois mandar para a função ProcessCommand.</p>
+<p>Recebe caracteres da UART um por um e reconstrói comandos completos. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c</td><td>Caractere recebido. </td></tr>
+    <tr><td class="paramname">c</td><td>Caractere recebido da UART </td></tr>
   </table>
   </dd>
 </dl>
@@ -278,11 +275,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Envio caractere a caractere. </p>
-<p>Esta função faz a transmissão caractere a caractere.</p>
+<p>Envia um único caractere pela UART. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c</td><td>Caractere a ser transmitido. </td></tr>
+    <tr><td class="paramname">c</td><td>Caractere a ser enviado</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Envia um único caractere pela UART.</p>
+<p>Esta função simula o comportamento da UART imprimindo o caractere fornecido na saída padrão.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Caractere a ser enviado. </td></tr>
   </table>
   </dd>
 </dl>
@@ -305,11 +309,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Envio de uma string caractere a caractere. </p>
-<p>Esta função converte uma string em caracteres para serem transmitidos</p>
+<p>Envia uma string pela UART. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">str</td><td>String a ser convertida e transmitida. </td></tr>
+    <tr><td class="paramname">str</td><td>Ponteiro para a string a ser enviada</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Envia uma string pela UART.</p>
+<p>Esta função simula o comportamento da UART imprimindo a string fornecida na saída padrão.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Ponteiro para a string a ser enviada. </td></tr>
   </table>
   </dd>
 </dl>

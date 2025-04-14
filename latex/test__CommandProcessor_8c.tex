@@ -24,12 +24,10 @@ Include dependency graph for test\+\_\+\+Command\+Processor.\+c\+:
 \Hypertarget{test__CommandProcessor_8c_a8765f1344e57db0a3e0c798c9ac6a1fe}\label{test__CommandProcessor_8c_a8765f1344e57db0a3e0c798c9ac6a1fe} 
 void {\bfseries reset\+Buffer} ()
 \item 
-\Hypertarget{test__CommandProcessor_8c_a4a3cfbee206d916c5738bd0b14af5424}\label{test__CommandProcessor_8c_a4a3cfbee206d916c5738bd0b14af5424} 
-void {\bfseries UART\+\_\+\+Send\+Char} (char c)
-\item 
-\Hypertarget{test__CommandProcessor_8c_a3d54817ce5409ef5576568ca41cce6ed}\label{test__CommandProcessor_8c_a3d54817ce5409ef5576568ca41cce6ed} 
-void {\bfseries UART\+\_\+\+Send\+String} (const char \texorpdfstring{$\ast$}{*}str)
-\item 
+void \mbox{\hyperlink{test__CommandProcessor_8c_a4a3cfbee206d916c5738bd0b14af5424}{UART\+\_\+\+Send\+Char}} (char c)
+\begin{DoxyCompactList}\small\item\em Envia um único caractere pela UART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{test__CommandProcessor_8c_a3d54817ce5409ef5576568ca41cce6ed}{UART\+\_\+\+Send\+String}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Envia uma string pela UART. \end{DoxyCompactList}\item 
 \Hypertarget{test__CommandProcessor_8c_a95c834d6178047ce9e1bce7cbfea2836}\label{test__CommandProcessor_8c_a95c834d6178047ce9e1bce7cbfea2836} 
 void {\bfseries set\+Up} (void)
 \item 
@@ -69,9 +67,6 @@ void {\bfseries test\+\_\+\+Invalid\+Format\+\_\+\+No\+End\+Frame} (void)
 \Hypertarget{test__CommandProcessor_8c_aa474593633e476f644eed4887f708922}\label{test__CommandProcessor_8c_aa474593633e476f644eed4887f708922} 
 void {\bfseries test\+\_\+\+Invalid\+Command\+Code} (void)
 \item 
-\Hypertarget{test__CommandProcessor_8c_a6ed4dc6293a94bf5540581060b1f92d1}\label{test__CommandProcessor_8c_a6ed4dc6293a94bf5540581060b1f92d1} 
-void {\bfseries test\+\_\+\+Sensor\+Values} (void)
-\item 
 \Hypertarget{test__CommandProcessor_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{test__CommandProcessor_8c_a840291bc02cba5474a4cb46a9b9566fe} 
 int {\bfseries main} (void)
 \end{DoxyCompactItemize}
@@ -102,3 +97,36 @@ Este arquivo contém testes unitários usando o framework Unity para validar o c
 \begin{DoxyDate}{Date}
 2025 
 \end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test__CommandProcessor_8c_a4a3cfbee206d916c5738bd0b14af5424}\label{test__CommandProcessor_8c_a4a3cfbee206d916c5738bd0b14af5424} 
+\index{test\_CommandProcessor.c@{test\_CommandProcessor.c}!UART\_SendChar@{UART\_SendChar}}
+\index{UART\_SendChar@{UART\_SendChar}!test\_CommandProcessor.c@{test\_CommandProcessor.c}}
+\doxysubsubsection{\texorpdfstring{UART\_SendChar()}{UART\_SendChar()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+Char (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Envia um único caractere pela UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Caractere a ser enviado \\
+\hline
+\end{DoxyParams}
+\Hypertarget{test__CommandProcessor_8c_a3d54817ce5409ef5576568ca41cce6ed}\label{test__CommandProcessor_8c_a3d54817ce5409ef5576568ca41cce6ed} 
+\index{test\_CommandProcessor.c@{test\_CommandProcessor.c}!UART\_SendString@{UART\_SendString}}
+\index{UART\_SendString@{UART\_SendString}!test\_CommandProcessor.c@{test\_CommandProcessor.c}}
+\doxysubsubsection{\texorpdfstring{UART\_SendString()}{UART\_SendString()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Send\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+
+
+Envia uma string pela UART. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Ponteiro para a string a ser enviada \\
+\hline
+\end{DoxyParams}
